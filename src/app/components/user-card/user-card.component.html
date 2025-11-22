@@ -1,0 +1,26 @@
+<div class="card">
+  <!-- Avatar -->
+  <div class="avatar">
+    @if (!loading()) {
+      <img [src]="user()?.avatar" alt="Avatar" />
+    } @else {
+      <app-skeleton type="circle" width="50px" height="50px"></app-skeleton>
+    }
+  </div>
+
+  <!-- Nome -->
+  <div class="content">
+    @if (!loading()) {
+      <h3>{{ user()?.name }}</h3>
+    } @else {
+      <app-skeleton type="title" width="10rem" height="1rem"></app-skeleton>
+    }
+
+    <!-- Job -->
+    @if (!loading()) {
+      <p>{{ user()?.job }}</p>
+    } @else {
+      <app-skeleton type="text" width="20rem" height="1rem"></app-skeleton>
+    }
+  </div>
+</div>

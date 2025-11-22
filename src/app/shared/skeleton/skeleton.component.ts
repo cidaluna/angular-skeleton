@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './skeleton.component.scss'
 })
 export class SkeletonComponent {
-  @Input() type: SkeletonType = 'text';
+  @Input() customType!: SkeletonType;
   @Input() width!: string;
   @Input() height!: string;
 
@@ -19,6 +19,8 @@ export class SkeletonComponent {
   pulse = signal(1);
 
   constructor() {
+    // primeiro disparo 0 e os próximos disparos a cada 1 segundo
+    // opacidade do efeito visual do skeleton alterna entre 1 e 0.6
     timer(0, 1000).subscribe(() => {
       this.pulse.update((v) => (v === 1 ? 0.6 : 1));
     });

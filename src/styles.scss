@@ -16,3 +16,12 @@ body {
   line-height: 1.25rem;
   padding: 10px 0;
 }
+
+button {
+  cursor: pointer;
+  border-radius: 6px;
+  background-color: black;
+  color: white;
+  padding: 4px 16px;
+  width: fit-content;
+}

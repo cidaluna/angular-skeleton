@@ -1,26 +1,36 @@
-<div class="card">
-  <!-- Avatar -->
-  <div class="avatar">
-    @if (!loading()) {
-      <img [src]="user()?.avatar" alt="Avatar" />
-    } @else {
-      <app-skeleton type="circle" width="50px" height="50px"></app-skeleton>
-    }
-  </div>
+<div class="cards-wrapper">
+  @for (i of [1,2,3,4]; track i) {
+  <div>
+    <!-- conteúdo do seu card -->
+    <div class="card">
+      <div class="avatar">
+        @if (!loading()) {
+        <img [src]="user()?.avatar" alt="Avatar" />
+        } @else {
+        <app-skeleton customType="avatar" width="50px" height="50px"></app-skeleton>
+        }
+      </div>
 
-  <!-- Nome -->
-  <div class="content">
-    @if (!loading()) {
-      <h3>{{ user()?.name }}</h3>
-    } @else {
-      <app-skeleton type="title" width="10rem" height="1rem"></app-skeleton>
-    }
+      <div class="content">
+        @if (!loading()) {
+        <h3>{{ user()?.name }}</h3>
+        } @else {
+        <app-skeleton customType="title" width="6rem" height="1rem"></app-skeleton>
+        }
 
-    <!-- Job -->
-    @if (!loading()) {
-      <p>{{ user()?.job }}</p>
-    } @else {
-      <app-skeleton type="text" width="20rem" height="1rem"></app-skeleton>
-    }
+        @if (!loading()) {
+        <p>{{ user()?.job }}</p>
+        } @else {
+        <app-skeleton customType="text" width="10rem" height="1rem"></app-skeleton>
+        }
+
+        @if (!loading()) {
+        <button type="button">Ver Perfil</button>
+        } @else {
+        <app-skeleton customType="button" width="100px" height="20px"></app-skeleton>
+        }
+      </div>
+    </div>
   </div>
+  }
 </div>

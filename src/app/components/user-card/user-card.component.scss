@@ -1,11 +1,21 @@
+.cards-wrapper {
+  display: flex;
+  justify-content: center;   // centraliza horizontalmente
+  align-items: center;        // centraliza verticalmente se tiver altura definida
+  gap: 1.5rem;                // espaço entre os cards
+  padding: 2rem;
+  flex-wrap: wrap;            // permite quebrar linha caso diminuir a tela
+}
+
 .card {
   display: flex;
   gap: 16px;
   align-items: center;
-  padding: 16px;
   border-radius: 12px;
   background: #fff;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  padding: 1rem;
 
   .avatar img {
     width: 48px;

@@ -1,4 +1,6 @@
-# AngularSkeleton
+# Skeleton no Angular
+
+![Skeleton no Angular 18](./src/assets/skeleton-no-angular-Cida-Luna-frontend.gif)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.19.
 

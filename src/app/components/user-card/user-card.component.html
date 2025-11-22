@@ -1,7 +1,17 @@
+<div class="card-full">
+  <div class="image-container">
+    <app-skeleton customType="image"></app-skeleton>
+  </div>
+  <div class="body-container">
+    <app-skeleton customType="title"></app-skeleton>
+    <app-skeleton customType="text"></app-skeleton>
+    <app-skeleton customType="text"></app-skeleton>
+  </div>
+</div>
+
 <div class="cards-wrapper">
   @for (i of [1,2,3,4]; track i) {
   <div>
-    <!-- conteúdo do seu card -->
     <div class="card">
       <div class="avatar">
         @if (!loading()) {
@@ -34,3 +44,10 @@
   </div>
   }
 </div>
+
+@if (error()) {
+  <div class="error-box">
+    <p>{{ error() }}</p>
+    <button type="button" (click)="loadUser()">Tentar novamente</button>
+  </div>
+}

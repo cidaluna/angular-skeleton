@@ -1,10 +1,62 @@
+.card-full {
+  padding: 2rem;
+  display: flex;
+  justify-content: flex-start;
+  gap: 16px;
+  background-color: white;
+  color: black;
+  width: 87%;
+  margin: 0 auto;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  .image-container {
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .body-container {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin: 12px 0;
+    flex: 1;
+    /* ocupa o restante do espaço para que width% dos skeletons façam sentido */
+    min-width: 0;
+    /* permite que filhos com width: 100% encolham corretamente em flex */
+  }
+}
+
+.error-box {
+  padding: 1rem;
+  background: #ffe2e2;
+  border: 1px solid #ff9a9a;
+  color: #a10000;
+  border-radius: 8px;
+  width: 100%;
+  text-align: center;
+
+  button {
+    margin-top: 10px;
+    padding: .5rem 1rem;
+    border: none;
+    background: #d33;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+}
+
 .cards-wrapper {
   display: flex;
-  justify-content: center;   // centraliza horizontalmente
-  align-items: center;        // centraliza verticalmente se tiver altura definida
-  gap: 1.5rem;                // espaço entre os cards
+  justify-content: center; // centraliza horizontalmente
+  align-items: center; // centraliza verticalmente se tiver altura definida
+  gap: 1.5rem; // espaço entre os cards
   padding: 2rem;
-  flex-wrap: wrap;            // permite quebrar linha caso diminuir a tela
+  flex-wrap: wrap; // permite quebrar linha caso diminuir a tela
 }
 
 .card {

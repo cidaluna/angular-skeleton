@@ -1,11 +1,12 @@
 import { Component, signal } from '@angular/core';
 import { timer } from 'rxjs';
 import { SkeletonComponent } from '../../shared/skeleton/skeleton.component';
+import { SkeletonTwoComponent } from '../../shared/skeleton-two/skeleton-two.component';
 
 @Component({
   selector: 'app-user-card',
   standalone: true,
-  imports: [SkeletonComponent],
+  imports: [SkeletonComponent, SkeletonTwoComponent],
   templateUrl: './user-card.component.html',
   styleUrl: './user-card.component.scss'
 })

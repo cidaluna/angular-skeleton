@@ -1,0 +1,32 @@
+
+
+.skeleton-two {
+  background: #bebebe;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  max-width: 100%;
+  box-sizing: border-box;
+  animation: pulse 1.5s ease-in-out infinite;
+
+  &.rectangle {
+    height: 12px;
+    width: 100%;
+  }
+
+  &.square {
+    height: 200px;
+    width: 100%;
+  }
+
+  &.circle {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+  }
+}
+
+@keyframes pulse {
+  0%   { opacity: 1; }
+  50%  { opacity: 0.4; }
+  100% { opacity: 1; }
+}

@@ -81,3 +81,42 @@
     gap: 6px;
   }
 }
+
+.card-example {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background-color: #ffffff;
+  color: black;
+  width: 87%;
+  margin: 0 auto;
+  border-radius: 12px;
+  border: 1px solid #cbcbcb;
+
+  h1 {
+    color: #000076;
+  }
+
+  p {
+    margin: 8px 0;
+  }
+
+  button.btn-example {
+    align-self: flex-end;
+    padding: 8px 22px;
+  }
+}
+
+.container-skeleton-two {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background-color: #ffffff;
+  color: black;
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 12px;
+  border: 1px solid #cbcbcb;
+}

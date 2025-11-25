@@ -103,8 +103,16 @@
   }
 
   button.btn-example {
+    background-color: #000076;
+    color: white;
     align-self: flex-end;
     padding: 8px 22px;
+  }
+
+  button.btn-example:disabled {
+    background-color: #cbcbcb;
+    color: #868686;
+    cursor: not-allowed;
   }
 }
 

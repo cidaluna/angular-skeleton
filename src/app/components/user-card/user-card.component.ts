@@ -14,6 +14,9 @@ export class UserCardComponent {
   loading = signal(true);
   user = signal<{ name: string; job: string; avatar: string } | null>(null);
   error = signal<string | null>(null);
+  showSkeletonTwo = signal(false);
+  // controle simples para evitar cliques múltiplos
+  isProcessing = signal(false);
 
   constructor() {
     this.loadUser();
@@ -44,5 +47,20 @@ export class UserCardComponent {
         this.loading.set(false);
       },
     });
+  }
+
+  callSkeletonTwo() {
+    //this.showSkeletonTwo.update(v => !v);
+    //se já estiver processando, ignora o clique
+    if (this.isProcessing()) return;
+
+    this.isProcessing.set(true);
+    this.showSkeletonTwo.set(true);
+
+    // mostra por 4s e depois oculta
+    setTimeout(() => {
+      this.showSkeletonTwo.set(false);
+      this.isProcessing.set(false);
+    }, 4000);
   }
 }

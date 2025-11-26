@@ -33,8 +33,8 @@ export class SkeletonTwoComponent {
   private validateSize(value?: string): string | undefined {
     if (!value) return undefined;
 
-    // Regex para aceitar somente px, %, rem, em, vh, vw
-    const valid = /^(\d+(\.\d+)?)(px|%|rem|em|vh|vw)$/i;
+    // Regex para aceitar somente px, rem, em, vh, vw
+    const valid = /^(\d+(\.\d+)?)(px|rem|em|vh|vw)$/i;
 
     return valid.test(value) ? value : undefined;
   }

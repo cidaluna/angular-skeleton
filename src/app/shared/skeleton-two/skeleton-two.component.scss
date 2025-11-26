@@ -1,12 +1,15 @@
 
 
 .skeleton-two {
-  background: #bebebe;
+  display: block;
+  box-sizing: border-box;
+  overflow: hidden;
+  background: linear-gradient(90deg, #e6e6e6 25%, #f2f2f2 50%, #e6e6e6 75%);
+  background-size: 200% 100%;
   border-radius: 4px;
   margin-bottom: 8px;
   max-width: 100%;
-  box-sizing: border-box;
-  animation: pulse 1.5s ease-in-out infinite;
+  animation: pulse 1.5s infinite linear;
 
   &.rectangle {
     height: 12px;
@@ -26,7 +29,6 @@
 }
 
 @keyframes pulse {
-  0%   { opacity: 1; }
-  50%  { opacity: 0.4; }
-  100% { opacity: 1; }
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
 }

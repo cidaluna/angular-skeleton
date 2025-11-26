@@ -22,11 +22,11 @@ export class SkeletonTwoComponent {
     this._height = this.validateSize(value);
   }
 
-  get widthSafe() {
+  get sanitizedWidth() {
     return this._width;
   }
 
-  get heightSafe() {
+  get sanitizedHeight() {
     return this._height;
   }
 

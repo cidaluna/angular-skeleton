@@ -1,3 +1,10 @@
+<br>
+<app-banner
+  [imageUrl]="offerBanner?.imageUrl || ''"
+  (imageLoaded)="onBannerImageLoaded()"
+  (imageError)="hideOfferBanner()"
+  (ctaClick)="handleOfferClick()"></app-banner>
+<br>
 <div class="card-full">
   <div class="image-container">
     <app-skeleton customType="image"></app-skeleton>
@@ -46,10 +53,10 @@
 </div>
 
 @if (error()) {
-  <div class="error-box">
-    <p>{{ error() }}</p>
-    <button type="button" (click)="loadUser()">Tentar novamente</button>
-  </div>
+<div class="error-box">
+  <p>{{ error() }}</p>
+  <button type="button" (click)="loadUser()">Tentar novamente</button>
+</div>
 }
 <hr><br>
 
@@ -59,17 +66,19 @@
     aliqua. sit amet, consectetur adipiscing elit. Sed do eiusmod.</p>
   <hr>
   @if (showSkeletonTwo()){
-    <div class="container-skeleton-two">
-        <!-- <app-skeleton-two type="circle" width="48px" height="48px"></app-skeleton-two> -->
-        <app-skeleton-two type="rectangle" width="180px" height="50px"></app-skeleton-two>
-        <app-skeleton-two type="rectangle" width="380px" height="1rem"></app-skeleton-two>
-        <app-skeleton-two type="rectangle" width="50rem" height="1rem"></app-skeleton-two>
-        <app-skeleton-two type="rectangle" width="50rem" height="1rem"></app-skeleton-two>
-        <app-skeleton-two type="rectangle" width="5vw" height="2vh"></app-skeleton-two>
-        <app-skeleton-two type="rectangle"></app-skeleton-two>
-      </div>
+  <div class="container-skeleton-two">
+    <!-- <app-skeleton-two type="circle" width="48px" height="48px"></app-skeleton-two> -->
+    <app-skeleton-two type="rectangle" width="180px" height="50px"></app-skeleton-two>
+    <app-skeleton-two type="rectangle" width="380px" height="1rem"></app-skeleton-two>
+    <app-skeleton-two type="rectangle" width="50rem" height="1rem"></app-skeleton-two>
+    <app-skeleton-two type="rectangle" width="50rem" height="1rem"></app-skeleton-two>
+    <app-skeleton-two type="rectangle" width="5vw" height="2vh"></app-skeleton-two>
+    <app-skeleton-two type="rectangle"></app-skeleton-two>
+  </div>
   }
   <button type="button" class="btn-example" (click)="callSkeletonTwo()" [disabled]="isProcessing()">Incluir</button>
 </div>
 <br><br>
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus, culpa repellendus est, architecto suscipit voluptatibus dolor laudantium sint similique cumque sapiente tempora natus reiciendis quisquam incidunt blanditiis aut error asperiores.</p>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus, culpa repellendus est, architecto suscipit
+  voluptatibus dolor laudantium sint similique cumque sapiente tempora natus reiciendis quisquam incidunt blanditiis aut
+  error asperiores.</p>

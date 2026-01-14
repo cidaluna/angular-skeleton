@@ -1,0 +1,21 @@
+<section class="offer-banner">
+  @if (showCta) {
+    <button
+      type="button"
+      class="offer-banner__cta"
+      aria-label="Acessar oferta"
+      (click)="onCtaClick()"
+    >
+      Ver oferta
+    </button>
+  }
+
+  <img
+    class="offer-banner__image"
+    [src]="imageUrl"
+    alt=""
+    loading="eager"
+    (load)="onImageLoad()"
+    (error)="onImageError()"
+  />
+</section>

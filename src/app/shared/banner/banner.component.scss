@@ -1,0 +1,27 @@
+.offer-banner {
+  position: relative;
+  width: 920px;
+  height: 319px;
+  margin: 0 auto; // centraliza no desktop
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 8px;
+  }
+
+  &__cta {
+    position: absolute;
+    top: 50%;
+    right: 64px; // levemente deslocado para a direita
+    transform: translateY(-50%);
+
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-weight: 600;
+
+    z-index: 1;
+  }
+}

@@ -1,0 +1,26 @@
+.static-card {
+  max-width: 280px; // largura min do card
+  min-width: 180px;;
+  padding: 16px;
+  border-radius: 8px;
+  background-color: #fff;
+  border: #000076 solid 1px;
+  box-sizing: border-box;
+
+  &__title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #333;
+  }
+
+  &__subtitle {
+    display: flex;
+    font-size: 16px;
+    color: #000076;
+
+    span {
+      margin-right: 8px;
+    }
+  }
+}

@@ -1,16 +1,18 @@
 import { Component, OnInit, signal } from '@angular/core';
-import { catchError, EMPTY, timer } from 'rxjs';
+import { catchError, EMPTY, map, tap, timer } from 'rxjs';
 import { SkeletonComponent } from '../../shared/skeleton/skeleton.component';
 import { SkeletonTwoComponent } from '../../shared/skeleton-two/skeleton-two.component';
 import { BannerComponent } from '../../shared/banner/banner.component';
-import { Banner, BannerService } from '../../services/banner.service';
+import { BannerService } from '../../services/banner.service';
+import { IDimensionsBanner, IOfferBanner, IOfferBannerView } from '../../interfaces/banner.interface';
+import { StaticMiniCardComponent } from '../static-mini-card/static-mini-card.component';
 
 @Component({
   selector: 'app-user-card',
   standalone: true,
-  imports: [SkeletonComponent, SkeletonTwoComponent, BannerComponent],
+  imports: [SkeletonComponent, SkeletonTwoComponent, BannerComponent, StaticMiniCardComponent],
   templateUrl: './user-card.component.html',
-  styleUrl: './user-card.component.scss'
+  styleUrl: './user-card.component.scss',
 })
 export class UserCardComponent implements OnInit {
   loading = signal(true);
@@ -19,25 +21,40 @@ export class UserCardComponent implements OnInit {
   showSkeletonTwo = signal(false);
   // controle simples para evitar cliques múltiplos
   isProcessing = signal(false);
+  totalCards: number = 5;
+  staticCards = [
+    { title: 'Card 1' },
+    { title: 'Card 2' },
+    { title: 'Card 3' },
+    { title: 'Card 4' },
+    { title: 'Card 5' },
+  ];
 
-  offerBanner: Banner | null = null;
-  showOfferBanner = false;
-  showCta = false;
+
+  bannerView: IOfferBannerView | null = null;
+  imageLoaded = false;
 
   constructor(private bannerService: BannerService) {
     this.loadUser();
   }
 
-   ngOnInit(): void {
-    this.bannerService.getOfferBanner().pipe(
-      catchError(() => {
-        this.showOfferBanner = false;
-        return EMPTY;
-      })
-    ).subscribe(banner => {
-      this.offerBanner = banner;
-      this.showOfferBanner = true;
-    });
+  ngOnInit(): void {
+    this.bannerService
+      .getOfferBanner()
+      .pipe(
+        map((banner) => this.setBannerByViewport(banner)),
+        tap(() => {
+          this.imageLoaded = false; // imagem nova vai carregar
+        }),
+        catchError(() => {
+          this.bannerView = null;
+          this.imageLoaded = false;
+          return EMPTY;
+        }),
+      )
+      .subscribe((banner) => {
+        this.bannerView = banner;
+      });
   }
 
   loadUser() {
@@ -83,18 +100,38 @@ export class UserCardComponent implements OnInit {
   }
 
   handleOfferClick(): void {
-    if (!this.offerBanner?.imageUrl) return;
+    if (!this.bannerView?.image) return;
 
     // navegação, tracking ou ação
     alert('Banner clicado!');
   }
 
-  onBannerImageLoaded(): void {
-    this.showCta = true;
+
+  private setBannerByViewport(banner: IOfferBanner): IOfferBannerView | null {
+    if (!banner.image) {
+      return null;
+    }
+
+    const width = window.innerWidth;
+
+    let activeImage: IDimensionsBanner;
+
+    if (width >= 1800) {
+      activeImage = banner.image.desktop;
+    } else if (width >= 1300) {
+      activeImage = banner.image.tablet;
+    } else {
+      activeImage = banner.image.mobile;
+    }
+
+    return {
+      ...banner,
+      activeImage,
+    };
   }
 
   hideOfferBanner(): void {
-    this.showOfferBanner = false;
-    this.showCta = false;
+    this.bannerView = null;
+    this.imageLoaded = false;
   }
 }

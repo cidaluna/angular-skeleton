@@ -1,9 +1,18 @@
 <br>
-<app-banner
-  [imageUrl]="offerBanner?.imageUrl || ''"
-  (imageLoaded)="onBannerImageLoaded()"
-  (imageError)="hideOfferBanner()"
-  (ctaClick)="handleOfferClick()"></app-banner>
+@if (bannerView) {
+  <app-banner
+    [banner]="bannerView"
+    (imageLoaded)="imageLoaded = true"
+    (imageError)="hideOfferBanner()">
+    @if (imageLoaded) {
+      <button
+        type="button"
+        class="offer-banner__cta"
+        aria-label="Acessar oferta"
+        (click)="handleOfferClick()">Ver Oferta</button>
+    }
+    </app-banner>
+}
 <br>
 <div class="card-full">
   <div class="image-container">
@@ -65,17 +74,16 @@
   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna
     aliqua. sit amet, consectetur adipiscing elit. Sed do eiusmod.</p>
   <hr>
-  @if (showSkeletonTwo()){
-  <div class="container-skeleton-two">
-    <!-- <app-skeleton-two type="circle" width="48px" height="48px"></app-skeleton-two> -->
-    <app-skeleton-two type="rectangle" width="180px" height="50px"></app-skeleton-two>
-    <app-skeleton-two type="rectangle" width="380px" height="1rem"></app-skeleton-two>
-    <app-skeleton-two type="rectangle" width="50rem" height="1rem"></app-skeleton-two>
-    <app-skeleton-two type="rectangle" width="50rem" height="1rem"></app-skeleton-two>
-    <app-skeleton-two type="rectangle" width="5vw" height="2vh"></app-skeleton-two>
-    <app-skeleton-two type="rectangle"></app-skeleton-two>
+  <div class="static-card__container">
+    @for( card of staticCards; track card) {
+       <app-static-mini-card
+        [title]="card.title"
+        [subtitle]="'R$'"
+        [showSkeleton]="true"
+      ></app-static-mini-card>
+    }
+
   </div>
-  }
   <button type="button" class="btn-example" (click)="callSkeletonTwo()" [disabled]="isProcessing()">Incluir</button>
 </div>
 <br><br>

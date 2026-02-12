@@ -1,17 +1,11 @@
 <br>
 @if (bannerView) {
-  <app-banner
-    [banner]="bannerView"
-    (imageLoaded)="imageLoaded = true"
-    (imageError)="hideOfferBanner()">
-    @if (imageLoaded) {
-      <button
-        type="button"
-        class="offer-banner__cta"
-        aria-label="Acessar oferta"
-        (click)="handleOfferClick()">Ver Oferta</button>
-    }
-    </app-banner>
+<app-banner [banner]="bannerView" (imageLoaded)="imageLoaded = true" (imageError)="hideOfferBanner()">
+  @if (imageLoaded) {
+  <button type="button" class="offer-banner__cta" aria-label="Acessar oferta" (click)="handleOfferClick()">Ver
+    Oferta</button>
+  }
+</app-banner>
 }
 <br>
 <div class="card-full">
@@ -76,13 +70,15 @@
   <hr>
   <div class="static-card__container">
     @for( card of staticCards; track card) {
-       <app-static-mini-card
-        [title]="card.title"
-        [subtitle]="'R$'"
-        [showSkeleton]="true"
-      ></app-static-mini-card>
+    <app-static-mini-card [title]="card.title" [subtitle]="'R$'" [showSkeleton]="true"></app-static-mini-card>
     }
-
+  </div>
+  <div class="static-card__details">
+    @for (detail of [1,2,3]; track detail) {
+    <div class="static-card__box">
+      <app-skeleton customType="text" width="350px" height="20px"></app-skeleton>
+    </div>
+    }
   </div>
   <button type="button" class="btn-example" (click)="callSkeletonTwo()" [disabled]="isProcessing()">Incluir</button>
 </div>

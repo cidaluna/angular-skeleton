@@ -135,3 +135,8 @@
   gap: 16px;
   flex-wrap: wrap;
 }
+
+app-static-mini-card {
+  flex: 0 0 calc((100% - 64px) / 5); // 5 cards com gap de 16px entre eles
+  box-sizing: border-box; // garante que padding e border sejam incluídos na largura total
+}

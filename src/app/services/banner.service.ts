@@ -1,21 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-
-export interface Banner {
-  id: number;
-  imageUrl: string;
-}
+import { IOfferBanner } from '../interfaces/banner.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BannerService {
 
-  constructor(private http: HttpClient) {}
+  constructor(private readonly http: HttpClient) {}
 
-  getOfferBanner(): Observable<Banner> {
-    return this.http.get<Banner>(
+  getOfferBanner(): Observable<IOfferBanner> {
+    return this.http.get<IOfferBanner>(
       'http://localhost:3000/offerBanner'
     );
   }

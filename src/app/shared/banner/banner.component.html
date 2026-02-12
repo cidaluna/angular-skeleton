@@ -1,5 +1,5 @@
 <section class="offer-banner">
-  @if (showCta) {
+  @if (imageLoaded) {
     <button
       type="button"
       class="offer-banner__cta"
@@ -10,12 +10,36 @@
     </button>
   }
 
-  <img
-    class="offer-banner__image"
-    [src]="imageUrl"
-    alt=""
-    loading="eager"
-    (load)="onImageLoad()"
-    (error)="onImageError()"
-  />
+  <!-- Para imagens responsivas: use APENAS <picture>. Nunca <img> isolado + <picture> juntos. -->
+  <picture>
+     <!-- telas desktop -->
+    <source
+      media="(min-width: 1800px)"
+      [srcset]="banner.image.desktop.url"
+    />
+
+    <!-- tablet -->
+    <source
+      media="(min-width: 1300px)"
+      [srcset]="banner.image.tablet.url"
+    />
+
+    <!-- mobile -->
+    <source
+      media="(min-width: 800px)"
+      [srcset]="banner.image.mobile.url"
+    />
+    <!-- mobile (fallback obrigatório) -->
+    <img
+      class="offer-banner__image"
+      [src]="banner.image.mobile.url"
+      [width]="banner.image.mobile.width"
+      [height]="banner.image.mobile.height"
+      alt=""
+      loading="eager"
+      decoding="async"
+      (load)="onImageLoad()"
+      (error)="onImageError()"
+    />
+</picture>
 </section>

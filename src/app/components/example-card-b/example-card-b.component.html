@@ -1,0 +1,25 @@
+<div class="card-example">
+  <h1>Title B </h1>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna
+    aliqua. sit amet, consectetur adipiscing elit. Sed do eiusmod.</p>
+  <hr>
+  <div>
+    <h3 class="static-card__title">Resumo</h3><br>
+    <h4 class="static-card__subtitle">Total de dívidas: <app-skeleton customType="text" width="350px" height="20px"></app-skeleton>
+    </h4>
+  </div>
+  <div class="static-card__container">
+    @for( card of staticCards; track card) {
+    <app-static-mini-card [title]="card.title" [subtitle]="'R$'" [showSkeleton]="true"></app-static-mini-card>
+    }
+  </div>
+  <div class="static-card__details">
+    @for (detail of [1,2,3]; track detail) {
+    <div class="static-card__box">
+      <app-skeleton customType="text" width="350px" height="20px"></app-skeleton>
+    </div>
+    }
+  </div>
+  <button type="button" class="btn-example" (click)="callSkeletonTwo()" [disabled]="isProcessing()">Incluir</button>
+</div>
+<br><br>

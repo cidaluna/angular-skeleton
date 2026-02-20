@@ -5,12 +5,11 @@ import { SkeletonTwoComponent } from '../../shared/skeleton-two/skeleton-two.com
 import { BannerComponent } from '../../shared/banner/banner.component';
 import { BannerService } from '../../services/banner.service';
 import { IDimensionsBanner, IOfferBanner, IOfferBannerView } from '../../interfaces/banner.interface';
-import { StaticMiniCardComponent } from '../static-mini-card/static-mini-card.component';
 
 @Component({
   selector: 'app-user-card',
   standalone: true,
-  imports: [SkeletonComponent, SkeletonTwoComponent, BannerComponent, StaticMiniCardComponent],
+  imports: [SkeletonComponent, SkeletonTwoComponent, BannerComponent, ],
   templateUrl: './user-card.component.html',
   styleUrl: './user-card.component.scss',
 })
@@ -18,17 +17,7 @@ export class UserCardComponent implements OnInit {
   loading = signal(true);
   user = signal<{ name: string; job: string; avatar: string } | null>(null);
   error = signal<string | null>(null);
-  showSkeletonTwo = signal(false);
-  // controle simples para evitar cliques múltiplos
-  isProcessing = signal(false);
-  totalCards: number = 5;
-  staticCards = [
-    { title: 'Card 1' },
-    { title: 'Card 2' },
-    { title: 'Card 3' },
-    { title: 'Card 4' },
-    { title: 'Card 5' },
-  ];
+
 
 
   bannerView: IOfferBannerView | null = null;
@@ -84,20 +73,6 @@ export class UserCardComponent implements OnInit {
     });
   }
 
-  callSkeletonTwo() {
-    //this.showSkeletonTwo.update(v => !v);
-    //se já estiver processando, ignora o clique
-    if (this.isProcessing()) return;
-
-    this.isProcessing.set(true);
-    this.showSkeletonTwo.set(true);
-
-    // mostra por 4s e depois oculta
-    setTimeout(() => {
-      this.showSkeletonTwo.set(false);
-      this.isProcessing.set(false);
-    }, 4000);
-  }
 
   handleOfferClick(): void {
     if (!this.bannerView?.image) return;

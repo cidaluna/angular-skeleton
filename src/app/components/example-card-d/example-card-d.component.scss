@@ -1,0 +1,104 @@
+.card-example {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background-color: #d2d2d2;
+  color: black;
+  width: 87%;
+  margin: 0 auto;
+  border-radius: 12px;
+  border: 1px solid #cbcbcb;
+
+  h1 {
+    color: #000076;
+  }
+
+  p {
+    margin: 8px 0;
+  }
+
+  button.btn-example {
+    background-color: #000076;
+    color: white;
+    align-self: flex-end;
+    padding: 8px 22px;
+  }
+
+  button.btn-example:disabled {
+    background-color: #cbcbcb;
+    color: #868686;
+    cursor: not-allowed;
+  }
+}
+
+/* variáveis locais */
+// :root {
+//   --cards-gap: 8px;
+// }
+
+.static-card__container {
+  display: flex;          /* <— garante a linha horizontal */
+  flex-wrap: nowrap;      /* impede quebra entre os dois mini-cards */
+  justify-content: space-between; /* distribui o espaço entre os mini-cards */
+}
+
+/* regra genérica para os mini cards */
+.static-card__container > app-static-mini-card {
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  min-width: 0; /* importante para evitar overflow em flex */
+}
+
+/* primeiro card: ocupa até 20% */
+.static-card__container > app-static-mini-card:first-child {
+  flex: 0 0 20%;
+  max-width: 20%;
+}
+
+/* segundo card: ocupa até 80% */
+.static-card__container > app-static-mini-card:nth-child(2) {
+  flex: 0 0 78%;
+  max-width: 78%;
+}
+
+/* responsividade: empilha em telas pequenas */
+@media (max-width: 1080px) {
+  .static-card__container {
+    flex-direction: column;
+    flex-wrap: wrap; /* permite que os cards quebrem para a próxima linha */
+  }
+
+  .static-card__container > app-static-mini-card,
+  .static-card__container > app-static-mini-card:first-child,
+  .static-card__container > app-static-mini-card:nth-child(2) {
+    flex: 0 0 100%;
+    max-width: 100%;
+    width: 100%;
+    margin-top: 8px;
+  }
+}
+
+.static-card__details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.static-card__box {
+  width: 100%;
+  border: 1px solid #000076;
+  padding: 8px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-sizing: border-box;
+  display: flex;
+  overflow: hidden;
+}
+
+.static-card__box app-skeleton {
+  flex: 1 1 auto; // permite que os skeletons cresçam e encolham conforme necessário
+  min-width: 0; // importante para evitar overflow em flex
+  max-width: 100%;  // garante que os skeletons não ultrapassem a largura do container
+}

@@ -1,0 +1,54 @@
+.card-example {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background-color: #d2d2d2;
+  color: black;
+  width: 87%;
+  margin: 0 auto;
+  border-radius: 12px;
+  border: 1px solid #cbcbcb;
+
+  h1 {
+    color: #000076;
+  }
+
+  p {
+    margin: 8px 0;
+  }
+
+  button.btn-example {
+    background-color: #000076;
+    color: white;
+    align-self: flex-end;
+    padding: 8px 22px;
+  }
+
+  button.btn-example:disabled {
+    background-color: #cbcbcb;
+    color: #868686;
+    cursor: not-allowed;
+  }
+}
+
+.static-card__title {
+  color: #000076;
+}
+
+.static-card__subtitle {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.static-card__container {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+app-static-mini-card {
+  flex: 0 0 calc((100% - 64px) / 7); // 7 cards com gap de 8px entre eles
+  box-sizing: border-box; // garante que padding e border sejam incluídos na largura total
+}

@@ -83,39 +83,7 @@
   }
 }
 
-.card-example {
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  background-color: #d2d2d2;
-  color: black;
-  width: 87%;
-  margin: 0 auto;
-  border-radius: 12px;
-  border: 1px solid #cbcbcb;
 
-  h1 {
-    color: #000076;
-  }
-
-  p {
-    margin: 8px 0;
-  }
-
-  button.btn-example {
-    background-color: #000076;
-    color: white;
-    align-self: flex-end;
-    padding: 8px 22px;
-  }
-
-  button.btn-example:disabled {
-    background-color: #cbcbcb;
-    color: #868686;
-    cursor: not-allowed;
-  }
-}
 
 .container-skeleton-two {
   padding: 2rem;
@@ -128,41 +96,6 @@
   margin: 0 auto;
   border-radius: 12px;
   border: 1px solid #cbcbcb;
-}
-
-.static-card__container {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-app-static-mini-card {
-  flex: 0 0 calc((100% - 64px) / 5); // 5 cards com gap de 16px entre eles
-  box-sizing: border-box; // garante que padding e border sejam incluídos na largura total
-}
-
-.static-card__details {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  width: 100%;
-}
-
-.static-card__box {
-  width: 100%;
-  border: 1px solid #000076;
-  padding: 8px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-sizing: border-box;
-  display: flex;
-  overflow: hidden;
-}
-
-.static-card__box app-skeleton {
-  flex: 1 1 auto; // permite que os skeletons cresçam e encolham conforme necessário
-  min-width: 0; // importante para evitar overflow em flex
-  max-width: 100%;  // garante que os skeletons não ultrapassem a largura do container
 }
 
 

@@ -11,13 +11,17 @@ import { SkeletonComponent } from '../../shared/skeleton/skeleton.component';
 })
 export class ExampleCardDComponent {
   showSkeletonTwo = signal(false);
+   readonly LABELS = {
+    NOT_CALC: 'Não calculado',
+    SPLIT_D: 'Split D',
+  };
 
   // controle simples para evitar cliques múltiplos
   isProcessing = signal(false);
   totalCards: number = 5;
   staticCards = [
-    { title: '' },
-    { title: 'Split D' },
+    { title: this.LABELS.NOT_CALC },
+    { title: this.LABELS.SPLIT_D },
   ];
 
   callSkeletonTwo() {

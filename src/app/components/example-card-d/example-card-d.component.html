@@ -3,12 +3,44 @@
   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna
     aliqua. sit amet, consectetur adipiscing elit. Sed do eiusmod.</p>
   <hr>
+
   <div class="static-card__container">
-    @for( card of staticCards; track card) {
-    <app-static-mini-card [title]="card.title" [subtitle]="'R$'" [showSkeleton]="true"></app-static-mini-card>
-    }
+    <!-- primeiro barra  -->
+    <div class="static-card__bar">
+      @if (staticCards[0]) {
+      <div class="static-card__title">{{ staticCards[0].title }}</div>
+
+      <div class="static-card__broken-bar" aria-hidden="true">
+        <span class="seg"></span>
+        <span class="seg"></span>
+        <span class="seg"></span>
+        <span class="seg"></span>
+      </div>
+
+      <div class="static-card__paragraph">
+        <span class="prg">0</span>
+        <span class="prg">500</span>
+        <span class="prg">1000</span>
+      </div>
+      }
+    </div>
+
+    <!-- segundo skeleton -->
+    <div class="static-card__animation">
+      @if (staticCards[1]) {
+        <app-static-mini-card
+          class="static-card__split"
+          [title]="staticCards[1].title"
+          [showSkeleton]="true"
+        ></app-static-mini-card>
+      }
+    </div>
   </div>
+  <!-- rodape ok -->
   <div class="static-card__details">
+    <div class="static-card__subtitle">
+      <h4>Atenção</h4>
+    </div>
     @for (detail of [1,2,3]; track detail) {
     <div class="static-card__box">
       <app-skeleton customType="text" width="350px" height="20px"></app-skeleton>

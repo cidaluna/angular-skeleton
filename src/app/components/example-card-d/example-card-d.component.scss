@@ -40,44 +40,123 @@
 .static-card__container {
   display: flex;          /* <— garante a linha horizontal */
   flex-wrap: nowrap;      /* impede quebra entre os dois mini-cards */
-  justify-content: space-between; /* distribui o espaço entre os mini-cards */
+  align-items: flex-start;
+  box-sizing: border-box;
+  gap: 16px;
 }
 
-/* regra genérica para os mini cards */
-.static-card__container > app-static-mini-card {
-  box-sizing: border-box;
-  flex: 0 0 auto;
-  min-width: 0; /* importante para evitar overflow em flex */
-}
+/* filhos conhecidos (evita seletores globais '> *') */
+// .static-card__container > .static-card__bar,
+// .static-card__container > .static-card__animation {
+//   box-sizing: border-box;
+//   min-width: 0; /* essencial para permitir encolhimento em flex */
+// }
+
 
 /* primeiro card: ocupa até 20% */
-.static-card__container > app-static-mini-card:first-child {
+.static-card__bar {
   flex: 0 0 20%;
   max-width: 20%;
+  border-radius: 8px;
+  border: 1px solid #bebebe;
+  background-color: #fff;
+  padding: 12px;
+
+  .static-card__title {
+    display: inline-block;
+    padding: 6px;
+    border: 1px solid #bebebe;
+    background-color: #f5f5f5;
+    border-radius: 24px;
+    color: #6b6b6b;
+    font-size: 12px;
+    max-width: 100%;
+    word-break: break-word; /* permite quebra de palavras longas para evitar overflow */
+  }
+
+  .static-card__broken-bar {
+    display: flex;
+    gap: 6px;
+    max-width: 70%;
+    align-items: center;
+    margin-top: 12px;
+  }
+
+  .static-card__broken-bar .seg {
+    flex: 1 1 0;
+    height: 12px;
+    background: #e0e0e0;
+  }
+
+  /* arredonda apenas as extremidades esquerda do primeiro e direita do último */
+  .static-card__broken-bar .seg:first-child { border-radius: 8px 0 0 8px; }
+  .static-card__broken-bar .seg:last-child  { border-radius: 0 8px 8px 0; }
+
+  .static-card__paragraph {
+    display: flex;
+    justify-content: space-between;
+    max-width: 70%;
+    margin-top: 8px;
+    color: #bebebe;
+    flex-wrap: wrap; // permite que o texto quebre em múltiplas linhas se necessário
+
+    .static-card__paragraph .prg {
+      font-size: 10px;
+      color: #bebebe;
+      white-space: normal;
+      min-width: 0;
+    }
+  }
 }
 
 /* segundo card: ocupa até 80% */
-.static-card__container > app-static-mini-card:nth-child(2) {
+.static-card__animation {
   flex: 0 0 78%;
   max-width: 78%;
+  border-radius: 8px;
+  border: 1px solid #bebebe;
+  background-color: #fff;
+  padding: 12px;
 }
 
-/* responsividade: empilha em telas pequenas */
-@media (max-width: 1080px) {
+.static-card__subtitle {
+  color: #000076;
+}
+
+// remove borda e padding no conteúdo interno dos mini-cards para evitar conflitos visuais
+.static-card__animation > app-static-mini-card.static-card__split ::ng-deep .static-mini-card {
+  border: none !important;
+  padding: 8px !important;
+  margin: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+@media (max-width: 880px) {
   .static-card__container {
     flex-direction: column;
-    flex-wrap: wrap; /* permite que os cards quebrem para a próxima linha */
+    gap: 12px;
+    align-items: stretch;
   }
 
-  .static-card__container > app-static-mini-card,
-  .static-card__container > app-static-mini-card:first-child,
-  .static-card__container > app-static-mini-card:nth-child(2) {
-    flex: 0 0 100%;
-    max-width: 100%;
-    width: 100%;
-    margin-top: 8px;
+  .static-card__container > .static-card__bar,
+  .static-card__container > .static-card__animation {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  /* allow inner content to wrap and avoid overflow on narrow devices */
+  .static-card__bar,
+  .static-card__animation,
+  .static-card__bar * {
+    min-width: 0;
+    box-sizing: border-box;
+    overflow: visible;
+    white-space: normal;
   }
 }
+
 
 .static-card__details {
   display: flex;

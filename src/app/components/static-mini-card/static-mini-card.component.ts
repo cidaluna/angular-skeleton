@@ -10,7 +10,6 @@ import { SkeletonComponent } from '../../shared/skeleton/skeleton.component';
 })
 export class StaticMiniCardComponent {
   @Input({ required: true }) title!: string;
-  @Input({ required: true }) subtitle!: string;
+  @Input() subtitle?: string;
   @Input() showSkeleton: boolean = true;
-
 }

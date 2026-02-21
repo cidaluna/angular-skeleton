@@ -1,4 +1,4 @@
-.static-card {
+.static-mini-card {
   min-width: 180px;
   padding: 16px;
   border-radius: 8px;
@@ -6,7 +6,7 @@
   border: #000076 solid 1px;
   box-sizing: border-box;
 
-  &__title {
+  &__title{
     font-size: 16px;
     font-weight: 600;
     margin-bottom: 8px;
@@ -14,7 +14,6 @@
   }
 
   &__subtitle {
-    display: flex;
     font-size: 16px;
     color: #000076;
 

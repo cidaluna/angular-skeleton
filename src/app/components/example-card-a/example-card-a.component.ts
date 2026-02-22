@@ -22,7 +22,7 @@ export class ExampleCardAComponent {
     'Cheque',
     'Protesto',
     'Sustação',
-    'Negativação',
+    'Cartório',
     'Endosso',
     'Causa Operação',
     'Reembolso cartão'

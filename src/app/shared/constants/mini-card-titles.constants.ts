@@ -1,9 +1,10 @@
 export const MINI_CARD_TITLES = [
-  "Cheque",
+  "Motivo",
   "Protesto",
   "Sustação",
-  "Negativação",
-  "Endosso",
+  "Negativação 1",
+  "Negativação 2",
   "Causa Operação",
-  "Reembolso cartão"
+  "Reembolso cartão",
+  "Cheque"
 ] as const;

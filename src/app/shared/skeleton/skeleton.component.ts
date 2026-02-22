@@ -1,4 +1,4 @@
-import { Component, Input, input, signal } from '@angular/core';
+import { Component, Input, signal } from '@angular/core';
 import { SkeletonType } from './skeleton.types';
 import { timer } from 'rxjs';
 import { CommonModule } from '@angular/common';

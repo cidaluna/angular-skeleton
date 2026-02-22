@@ -1,6 +1,7 @@
 import { Component, Input, signal, ChangeDetectionStrategy } from '@angular/core';
 import { StaticMiniCardComponent } from '../static-mini-card/static-mini-card.component';
 import { SkeletonComponent } from '../../shared/skeleton/skeleton.component';
+import { MINI_CARD_TITLES } from '../../shared/constants/mini-card-titles.constants';
 
 @Component({
   selector: 'app-example-card-b',
@@ -18,16 +19,25 @@ export class ExampleCardBComponent {
   // controle simples para evitar cliques múltiplos
   isProcessing = signal(false);
   totalCards: number = 5;
-  staticCards = [
-    { title: 'Motivo' },
-    { title: 'Protesto' },
-    { title: 'Sustação' },
-    { title: 'Negativação' },
-    { title: 'Endosso' },
-    { title: 'Causa' },
-    { title: 'Contraordem' },
-    { title: 'Cheque' },
-  ];
+
+
+  staticCards: { title: string; uiKey: string } [] = [];
+
+  constructor() {
+    this.staticCards = MINI_CARD_TITLES.map((title: string) => ({
+      title,
+      uiKey: `id-mini-card-title-${this.slugify(title)}`
+    }));
+  }
+
+  private slugify(value: string): string {
+    return value
+    .normalize('NFD') // separa acentos
+    .replace(/[\u0300-\u036f]/g, '') // remove acentos
+    .trim() // remove espaços nas extremidades
+    .toLowerCase() // converte para minúsculas
+    .replace(/\s+/g, '-'); // substitui espaços por hífens
+  }
 
   callSkeletonTwo() {
       //this.showSkeletonTwo.update(v => !v);

@@ -18,15 +18,33 @@ export class ExampleCardAComponent {
   // controle simples para evitar cliques múltiplos
   isProcessing = signal(false);
   totalCards: number = 5;
-  staticCards = [
-    { title: 'Cheque' },
-    { title: 'Protesto' },
-    { title: 'Sustação' },
-    { title: 'Negativação' },
-    { title: 'Endosso' },
-    { title: 'Causa' },
-    { title: 'Contraordem' },
+  private readonly miniCardTitles = [
+    'Cheque',
+    'Protesto',
+    'Sustação',
+    'Negativação',
+    'Endosso',
+    'Causa Operação',
+    'Reembolso cartão'
   ];
+
+  staticCards: { title: string; uiKey: string } [] = [];
+
+  constructor() {
+    this.staticCards = this.miniCardTitles.map(title => ({
+      title,
+      uiKey: `title-card-${this.slugify(title)}`
+    }));
+  }
+
+  private slugify(value: string): string {
+    return value
+    .normalize('NFD') // separa acentos
+    .replace(/[\u0300-\u036f]/g, '') // remove acentos
+    .trim() // remove espaços nas extremidades
+    .toLowerCase() // converte para minúsculas
+    .replace(/\s+/g, '-'); // substitui espaços por hífens
+  }
 
   callSkeletonTwo() {
       //this.showSkeletonTwo.update(v => !v);

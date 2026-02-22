@@ -21,5 +21,37 @@
         "height": 160
       }
     }
-  }
+  },
+  "offerCards": [
+    {
+      "id": 1,
+      "status": "active",
+      "type": "card-offer-animation",
+      "title": "Summer Sale",
+      "description": "Get up to 50% off on selected items.",
+      "layout": "card-b"
+    },
+    {
+      "id": 2,
+      "status": "active",
+      "type": "card-offer-animation",
+      "title": "Winter Clearance",
+      "description": "Up to 70% off on winter collection."
+    },
+    {
+      "id": 3,
+      "status": "active",
+      "type": "card-offer-animation",
+      "title": "Spring Specials",
+      "description": "Fresh deals for the new season."
+    },
+    {
+      "id": 4,
+      "status": "active",
+      "type": "card-offer-animation",
+      "title": "Black Friday Deals",
+      "description": "Don't miss out on our biggest sale of the year!",
+      "layout": "card-b"
+    }
+  ]
 }

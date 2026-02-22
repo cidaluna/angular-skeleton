@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, Input, signal } from '@angular/core';
 import { StaticMiniCardComponent } from '../static-mini-card/static-mini-card.component';
 import { SkeletonComponent } from '../../shared/skeleton/skeleton.component';
 
@@ -10,6 +10,8 @@ import { SkeletonComponent } from '../../shared/skeleton/skeleton.component';
   styleUrl: './example-card-d.component.scss'
 })
 export class ExampleCardDComponent {
+  @Input() mainTitle!: string;
+  @Input() mainDescription!: string;
   showSkeletonTwo = signal(false);
    readonly LABELS = {
     NOT_CALC: 'Não calculado',

@@ -1,19 +1,22 @@
-@for (i of listOffers; track i) {
-  @if (i.status === 'active' && i.type === 'card-offer-animation') {
-   @switch (i.layout) {
-      @case ('card-a'){
-        <app-example-card-a [mainTitle]="i.title" [mainDescription]="i.description"></app-example-card-a>
-      }
-      @case ('card-b'){
-        <app-example-card-b [mainTitle]="i.title" [mainDescription]="i.description"></app-example-card-b>
-      }
-      @case ('card-c'){
-        <app-example-card-c [mainTitle]="i.title" [mainDescription]="i.description"></app-example-card-c>
-      }
-      @default {
-        <app-example-card-d [mainTitle]="i.title" [mainDescription]="i.description"></app-example-card-d>
+@if (listOffers$ | async; as listOffers) {
+  @for (i of listOffers; track i.id || $index) {
+    @if (i.status === 'active' && i.type === 'card-offer-animation') {
+      @switch (i.layout) {
+        @case ('card-a'){
+          <app-example-card-a [mainTitle]="i.title" [mainDescription]="i.description"></app-example-card-a>
+        }
+        @case ('card-b'){
+          <app-example-card-b [mainTitle]="i.title" [mainDescription]="i.description"></app-example-card-b>
+        }
+        @case ('card-c'){
+          <app-example-card-c [mainTitle]="i.title" [mainDescription]="i.description"></app-example-card-c>
+        }
+        @default {
+          <app-example-card-d [mainTitle]="i.title" [mainDescription]="i.description"></app-example-card-d>
+        }
       }
     }
   }
 }
+
 

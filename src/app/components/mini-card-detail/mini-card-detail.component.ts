@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { SkeletonComponent } from '../../shared/skeleton/skeleton.component';
 
 @Component({
@@ -6,7 +6,8 @@ import { SkeletonComponent } from '../../shared/skeleton/skeleton.component';
   standalone: true,
   imports: [SkeletonComponent],
   templateUrl: './mini-card-detail.component.html',
-  styleUrl: './mini-card-detail.component.scss'
+  styleUrl: './mini-card-detail.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MiniCardDetailComponent {
   @Input({ required: true }) title!: string;

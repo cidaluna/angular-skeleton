@@ -1,4 +1,4 @@
-import { Component, Input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, signal } from '@angular/core';
 import { SkeletonType } from './skeleton.types';
 import { timer } from 'rxjs';
 import { CommonModule } from '@angular/common';
@@ -10,6 +10,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
   imports: [CommonModule],
   templateUrl: './skeleton.component.html',
   styleUrl: './skeleton.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SkeletonComponent {
   private defaultSizeByType: Record<SkeletonType, { width: string; height: string }> = {

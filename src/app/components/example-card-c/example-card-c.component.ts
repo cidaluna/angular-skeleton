@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { MiniCardDetailComponent } from '../mini-card-detail/mini-card-detail.component';
 
 @Component({
@@ -6,7 +6,8 @@ import { MiniCardDetailComponent } from '../mini-card-detail/mini-card-detail.co
   standalone: true,
   imports: [MiniCardDetailComponent],
   templateUrl: './example-card-c.component.html',
-  styleUrl: './example-card-c.component.scss'
+  styleUrl: './example-card-c.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ExampleCardCComponent {
   @Input() mainTitle!: string;

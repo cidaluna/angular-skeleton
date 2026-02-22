@@ -1,4 +1,4 @@
-import { Component, Input, signal } from '@angular/core';
+import { Component, Input, signal, ChangeDetectionStrategy } from '@angular/core';
 import { StaticMiniCardComponent } from '../static-mini-card/static-mini-card.component';
 import { SkeletonComponent } from '../../shared/skeleton/skeleton.component';
 
@@ -7,7 +7,8 @@ import { SkeletonComponent } from '../../shared/skeleton/skeleton.component';
   standalone: true,
   imports: [SkeletonComponent, StaticMiniCardComponent],
   templateUrl: './example-card-b.component.html',
-  styleUrl: './example-card-b.component.scss'
+  styleUrl: './example-card-b.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ExampleCardBComponent {
   @Input() mainTitle!: string;

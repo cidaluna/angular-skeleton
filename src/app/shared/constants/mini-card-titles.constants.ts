@@ -4,7 +4,7 @@ export const MINI_CARD_TITLES = [
   "Sustação",
   "Negativação 1",
   "Negativação 2",
-  "Causa Operação",
-  "Reembolso cartão",
+  "Causa",
+  "Reembolso",
   "Cheque"
 ] as const;

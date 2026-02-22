@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { SkeletonComponent } from '../../shared/skeleton/skeleton.component';
 
+export type StaticMiniCardVariant = 'default' | 'infoCompany';
+
 @Component({
   selector: 'app-static-mini-card',
   standalone: true,
@@ -12,4 +14,7 @@ export class StaticMiniCardComponent {
   @Input({ required: true }) title!: string;
   @Input() subtitle?: string;
   @Input() showSkeleton: boolean = true;
+  @Input() variant!: StaticMiniCardVariant;
+  @Input() company!: string;
+  @Input() category!: string;
 }

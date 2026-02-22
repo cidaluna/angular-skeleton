@@ -1,15 +1,17 @@
-import { Component, signal } from '@angular/core';
+import { Component, Input, signal } from '@angular/core';
 import { StaticMiniCardComponent } from '../static-mini-card/static-mini-card.component';
 import { SkeletonComponent } from '../../shared/skeleton/skeleton.component';
 
 @Component({
-  selector: 'app-example-card',
+  selector: 'app-example-card-a',
   standalone: true,
   imports: [SkeletonComponent, StaticMiniCardComponent],
-  templateUrl: './example-card.component.html',
-  styleUrl: './example-card.component.scss'
+  templateUrl: './example-card-a.component.html',
+  styleUrl: './example-card-a.component.scss'
 })
-export class ExampleCardComponent {
+export class ExampleCardAComponent {
+  @Input() mainTitle!: string;
+  @Input() mainDescription!: string;
   showSkeletonTwo = signal(false);
 
   // controle simples para evitar cliques múltiplos

@@ -21,4 +21,16 @@
       margin-right: 8px;
     }
   }
+
+  &__row {
+    display: flex;
+    margin-bottom: 6px;
+  }
+
+  &__label {
+    font-size: 14px;
+    color: #bebebe;
+    margin-right: 8px;
+    text-wrap: nowrap;
+  }
 }

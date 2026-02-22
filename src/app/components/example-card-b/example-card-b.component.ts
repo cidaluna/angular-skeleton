@@ -18,14 +18,14 @@ export class ExampleCardBComponent {
   isProcessing = signal(false);
   totalCards: number = 5;
   staticCards = [
-    { title: 'Cheque' },
+    { title: 'Motivo' },
     { title: 'Protesto' },
     { title: 'Sustação' },
     { title: 'Negativação' },
     { title: 'Endosso' },
     { title: 'Causa' },
     { title: 'Contraordem' },
-    { title: 'Motivo' },
+    { title: 'Cheque' },
   ];
 
   callSkeletonTwo() {

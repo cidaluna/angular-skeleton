@@ -9,7 +9,7 @@
   </div>
   <div class="static-card__container">
     @for( card of staticCards; track card) {
-    <app-static-mini-card [title]="card.title" [showSkeleton]="true"></app-static-mini-card>
+    <app-static-mini-card [title]="card.title" [showSkeleton]="true" [variant]="'default'"></app-static-mini-card>
     }
   </div>
   <div class="static-card__details">

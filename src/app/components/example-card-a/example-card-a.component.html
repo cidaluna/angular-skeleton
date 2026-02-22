@@ -1,7 +1,6 @@
 <div class="card-example">
-  <h1>Title A </h1>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna
-    aliqua. sit amet, consectetur adipiscing elit. Sed do eiusmod.</p>
+  <h1>{{ mainTitle }} </h1>
+  <p>{{ mainDescription }}</p>
   <hr>
   <div>
     <h3 class="static-card__title">Resumo</h3><br>
@@ -9,7 +8,7 @@
   </div>
   <div class="static-card__container">
     @for( card of staticCards; track card) {
-    <app-static-mini-card [title]="card.title" [showSkeleton]="true"></app-static-mini-card>
+    <app-static-mini-card [title]="card.title" [showSkeleton]="true" [variant]="'default'"></app-static-mini-card>
     }
   </div>
   <button type="button" class="btn-example" (click)="callSkeletonTwo()" [disabled]="isProcessing()">Incluir</button>

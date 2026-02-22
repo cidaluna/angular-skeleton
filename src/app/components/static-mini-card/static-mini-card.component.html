@@ -1,9 +1,24 @@
 <div class="static-mini-card" id="static-mini-card">
-  <h3 class="static-mini-card__title">{{ title }}</h3>
-  <div class="static-mini-card__subtitle">
+  <h3 class="static-mini-card__title" id="static-mini-card-title">{{ title }}</h3>
+  @if (variant === 'default') {
+  <div class="static-mini-card__subtitle" id="static-mini-card-default">
     <span>{{ subtitle }}</span>
     @if(showSkeleton) {
-      <app-skeleton customType="text" width="120px" height="20px"></app-skeleton>
+    <app-skeleton customType="text" width="120px" height="20px"></app-skeleton>
     }
   </div>
+  } @else if (variant === 'infoCompany') {
+    <div class="static-mini-card__row" id="static-mini-card-company">
+      <p class="static-mini-card__label">{{ company }}</p>
+      @if(showSkeleton) {
+      <app-skeleton customType="text" width="120px" height="20px"></app-skeleton>
+      }
+    </div>
+    <div class="static-mini-card__row" id="static-mini-card-category">
+      <p class="static-mini-card__label">{{ category }}</p>
+      @if(showSkeleton) {
+      <app-skeleton customType="text" width="120px" height="20px"></app-skeleton>
+      }
+    </div>
+  }
 </div>

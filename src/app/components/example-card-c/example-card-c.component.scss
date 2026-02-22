@@ -10,10 +10,6 @@
   border-radius: 12px;
   border: 1px solid #cbcbcb;
 
-  h1 {
-    color: #000076;
-  }
-
   p {
     margin: 8px 0;
   }
@@ -48,7 +44,7 @@
   flex-wrap: wrap;
 }
 
-app-static-mini-card {
-  flex: 0 0 calc((100% - 64px) / 8); // 8 cards com gap de 8px entre eles
+app-mini-card-detail {
+  flex: 0 0 calc((100% - 64px) / 5); // 5 cards com gap de 8px entre eles
   box-sizing: border-box; // garante que padding e border sejam incluídos na largura total
 }

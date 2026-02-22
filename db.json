@@ -26,7 +26,7 @@
       "id": 1,
       "status": "active",
       "type": "card-offer-animation",
-      "title": "1 Summer Sale",
+      "title": "1 Cyber Monday Offers",
       "description": "Get up to 50% off on selected items.",
       "layout": "card-a"
     },
@@ -52,6 +52,14 @@
       "type": "card-offer-animation",
       "title": "4 Black Friday Deals",
       "description": "Don't miss out on our biggest sale of the year!"
+    },
+    {
+      "id": 5,
+      "status": "active",
+      "type": "card-offer-animation",
+      "title": "5 Holiday Discounts",
+      "description": "Celebrate the holidays with special discounts.",
+      "layout": "card-jl"
     }
   ]
 }

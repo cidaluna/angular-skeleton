@@ -8,7 +8,7 @@
   </div>
   <div class="static-card__container">
     @for( card of staticCards; track card) {
-    <app-static-mini-card [title]="card.title" [showSkeleton]="true" [variant]="'infoCompany'" [company]="card.company" [category]="card.category"></app-static-mini-card>
+    <app-mini-card-detail [title]="card.title" [showSkeleton]="true" [company]="card.company" [category]="card.category"></app-mini-card-detail>
     }
   </div>
   <button type="button" class="btn-example">Incluir</button>

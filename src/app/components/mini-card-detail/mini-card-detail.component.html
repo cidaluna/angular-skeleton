@@ -1,0 +1,17 @@
+<div class="mini-card-detail" id="mini-card-detail">
+  <h3 class="mini-card-detail__title" id="mini-card-detail-title">{{ title }}</h3>
+
+  <div class="mini-card-detail__row" id="mini-card-detail-company">
+    <p class="mini-card-detail__label">{{ company }}</p>
+    @if(showSkeleton) {
+    <app-skeleton customType="text" width="120px" height="20px"></app-skeleton>
+    }
+  </div>
+  <div class="mini-card-detail__row" id="mini-card-detail-category">
+    <p class="mini-card-detail__label">{{ category }}</p>
+    @if(showSkeleton) {
+    <app-skeleton customType="text" width="120px" height="20px"></app-skeleton>
+    }
+  </div>
+
+</div>

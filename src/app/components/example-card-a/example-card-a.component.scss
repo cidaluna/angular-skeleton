@@ -10,10 +10,6 @@
   border-radius: 12px;
   border: 1px solid #cbcbcb;
 
-  h1 {
-    color: #000076;
-  }
-
   p {
     margin: 8px 0;
   }
@@ -47,6 +43,24 @@
   gap: 8px;
   flex-wrap: wrap;
 }
+
+.static-card__box {
+  display: inline-flex;
+  /* garante que filhos flex possam encolher sem overflow quando inline dentro de um h4 */
+  min-width: 0;
+  max-width: 100%;
+  align-items: center;
+}
+
+.static-card__box app-skeleton {
+  display: block;       /* tratar o host como bloco */
+  flex: 1 1 auto;       /* permite crescer/encolher dentro do flex */
+  width: 100%;          /* ocupa espaço disponível, sem forçar além do container */
+  min-width: 0;         /* evita overflow em flex items */
+  max-width: 100%;      /* protege contra valores fixos internos (ex.: 350px) */
+  box-sizing: border-box;
+}
+
 
 app-static-mini-card {
   flex: 0 0 calc((100% - 64px) / 7); // 7 cards com gap de 8px entre eles

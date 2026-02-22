@@ -10,10 +10,6 @@
   border-radius: 12px;
   border: 1px solid #cbcbcb;
 
-  h1 {
-    color: #000076;
-  }
-
   p {
     margin: 8px 0;
   }
@@ -60,7 +56,7 @@ app-static-mini-card {
   width: 100%;
 }
 
-.static-card__box {
+.static-card__box--rodape {
   width: 100%;
   border: 1px solid #000076;
   padding: 8px;
@@ -68,10 +64,19 @@ app-static-mini-card {
   border-radius: 8px;
   box-sizing: border-box;
   display: flex;
-  overflow: hidden;
+  min-width: 0;
+  max-width: 100%;
 }
 
-.static-card__box app-skeleton {
+.static-card__box {
+  display: inline-flex;
+  /* garante que filhos flex possam encolher sem overflow quando inline dentro de um h4 */
+  min-width: 0;
+  max-width: 100%;
+  align-items: center;
+}
+
+.static-card__box app-skeleton, .static-card__box--rodape app-skeleton {
   flex: 1 1 auto; // permite que os skeletons cresçam e encolham conforme necessário
   min-width: 0; // importante para evitar overflow em flex
   max-width: 100%;  // garante que os skeletons não ultrapassem a largura do container

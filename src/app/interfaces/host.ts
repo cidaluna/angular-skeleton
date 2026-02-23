@@ -4,5 +4,4 @@ export interface IHostOffer {
   type: string;
   title: string;
   description: string;
-  layout: string;
 }

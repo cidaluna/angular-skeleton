@@ -42,4 +42,13 @@ export class ExampleCardDComponent {
       }, 4000);
     }
 
+    protected slugify(value: string): string {
+    return value
+    .normalize('NFD') // separa acentos
+    .replace(/[\u0300-\u036f]/g, '') // remove acentos
+    .trim() // remove espaços nas extremidades
+    .toLowerCase() // converte para minúsculas
+    .replace(/\s+/g, '-'); // substitui espaços por hífens
+  }
+
 }

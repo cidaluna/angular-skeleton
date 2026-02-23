@@ -30,6 +30,7 @@
         <app-static-mini-card
           class="static-card__split"
           [title]="staticCards[1].title"
+          [uiKey]="slugify(staticCards[1].title)"
           [showSkeleton]="true"
         ></app-static-mini-card>
       }

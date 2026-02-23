@@ -1,0 +1,14 @@
+<div class="card-example">
+  <div class="card-example__header">
+    <h2 class="card-example__title">{{ mainTitle }}Teste</h2>
+    <p class="card-example__description">{{ mainDescription }}Teste</p>
+  </div>
+  <hr>
+  <div class="card-example__body">
+    <ng-content></ng-content>
+  </div>
+  <div class="card-example__footer">
+    <button type="button" class="card-example__button" (click)="callSkeletonTwo()" [disabled]="isProcessing()">Incluir</button>
+  </div>
+</div>
+<br><br>

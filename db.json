@@ -25,41 +25,23 @@
     {
       "id": 1,
       "status": "active",
-      "type": "card-offer-animation",
+      "type": "card_offer",
       "title": "1 Cyber Monday Offers",
-      "description": "Get up to 50% off on selected items.",
-      "layout": "card-a"
+      "description": "Get up to 50% off on selected items."
     },
     {
       "id": 2,
       "status": "active",
-      "type": "card-offer-animation",
+      "type": "card_animated_split",
       "title": "2 Winter Clearance",
-      "description": "Up to 70% off on winter collection.",
-      "layout": "card-b"
+      "description": "Up to 70% off on winter collection."
     },
     {
       "id": 3,
       "status": "active",
-      "type": "card-offer-animation",
+      "type": "card_animated_summary",
       "title": "3 Spring Specials",
-      "description": "Fresh deals for the new season.",
-      "layout": "card-c"
-    },
-    {
-      "id": 4,
-      "status": "active",
-      "type": "card-offer-animation",
-      "title": "4 Black Friday Deals",
-      "description": "Don't miss out on our biggest sale of the year!"
-    },
-    {
-      "id": 5,
-      "status": "active",
-      "type": "card-offer-animation",
-      "title": "5 Holiday Discounts",
-      "description": "Celebrate the holidays with special discounts.",
-      "layout": "card-jl"
+      "description": "Fresh deals for the new season."
     }
   ]
 }

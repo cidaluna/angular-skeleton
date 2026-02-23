@@ -1,1 +1,17 @@
-<p>example-card-e works!</p>
+<div class="card-example">
+  <h1>{{ mainTitle }}</h1>
+  <p>{{ mainDescription }}</p>
+  <hr>
+
+  <!-- rodape ok -->
+  <div class="static-card__details">
+    <p>Default </p>
+    @for (detail of [1,2,3]; track detail) {
+    <div class="static-card__box">
+      <app-skeleton customType="text" width="350px" height="20px"></app-skeleton>
+    </div>
+    }
+  </div>
+  <button type="button" class="btn-example" (click)="callSkeletonTwo()" [disabled]="isProcessing()">Incluir</button>
+</div>
+<br><br>

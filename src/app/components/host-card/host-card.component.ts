@@ -26,4 +26,10 @@ export class HostCardComponent {
     // inicializa após hostService estar disponível
     this.listOffers$ = this.hostService.getHostOffers();
   }
+
+  offerAccepted(offer: IHostOffer, index: number): void {
+    // handler invoked from template when a card offer is accepted
+    // currently logs acceptance; extend to call backend when available
+    console.log('offerAccepted', { offer, index });
+  }
 }

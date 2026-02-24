@@ -1,12 +1,13 @@
 @if (listOffers$ | async; as listOffers) {
-  @for (i of listOffers; track i.id) {
-    @if (i.status === 'active') {
+  @for (offer of listOffers; track offer.id; let index = $index) {
+    @if (offer.status === 'active') {
       <app-card-offer
-        [mainTitle]="i.title"
-        [mainDescription]="i.description"
+        [mainTitle]="offer.title"
+        [mainDescription]="offer.description"
+        (offerAccepted)="offerAccepted(offer, index )"
       >
 
-        @switch (i.type) {
+        @switch (offer.type) {
 
           @case ('card_animated_compact'){
             <app-example-card-a></app-example-card-a>

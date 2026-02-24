@@ -13,7 +13,7 @@ import { ExampleCardEComponent } from '../example-card-e/example-card-e.componen
 @Component({
   selector: 'app-host-card',
   standalone: true,
-  imports: [AsyncPipe, ExampleCardAComponent, ExampleCardBComponent, ExampleCardCComponent, ExampleCardDComponent, ExampleCardEComponent],
+  imports: [AsyncPipe, ExampleCardAComponent, ExampleCardBComponent, ExampleCardCComponent, ExampleCardDComponent, ExampleCardEComponent, CardOfferComponent],
   templateUrl: './host-card.component.html',
   styleUrl: './host-card.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

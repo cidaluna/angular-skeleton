@@ -1,8 +1,4 @@
-<div class="card-example">
-  <h1>{{ mainTitle }}</h1>
-  <p>{{ mainDescription }}</p>
-  <hr>
-  <div>
+  <div class="static-card__info-body">
     <h3 class="static-card__title">Resumo - Summary</h3><br>
     <h4 class="static-card__subtitle">Total de dívidas: <span class="static-card__box"><app-skeleton customType="text"
           width="350px" height="20px"></app-skeleton></span>
@@ -20,6 +16,3 @@
     </div>
     }
   </div>
-  <button type="button" class="btn-example" (click)="callSkeletonTwo()" [disabled]="isProcessing()">Incluir</button>
-</div>
-<br><br>

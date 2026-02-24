@@ -38,10 +38,15 @@
   flex-wrap: wrap;
 }
 
+.static-card__info-body {
+  margin-bottom: 16px;
+}
+
 .static-card__container {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
+  margin-bottom: 16px;
 }
 
 app-static-mini-card {

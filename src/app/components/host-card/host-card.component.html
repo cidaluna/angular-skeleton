@@ -1,25 +1,31 @@
 @if (listOffers$ | async; as listOffers) {
   @for (i of listOffers; track i.id) {
     @if (i.status === 'active') {
-      @switch (i.type) {
-        @case ('card_animated_compact'){
-          <app-example-card-a [mainTitle]="i.title" [mainDescription]="i.description"></app-example-card-a>
+      <app-card-offer
+        [mainTitle]="i.title"
+        [mainDescription]="i.description"
+      >
+
+        @switch (i.type) {
+
+          @case ('card_animated_compact'){
+            <app-example-card-a></app-example-card-a>
+          }
+          @case ('card_animated_summary'){
+            <app-example-card-b></app-example-card-b>
+          }
+          @case ('card_animated_detail'){
+            <app-example-card-c></app-example-card-c>
+          }
+          @case ('card_animated_split'){
+            <app-example-card-d></app-example-card-d>
+          }
+          @case ('card_offer'){
+            <app-example-card-e></app-example-card-e>
+          }
         }
-        @case ('card_animated_summary'){
-          <app-example-card-b [mainTitle]="i.title" [mainDescription]="i.description"></app-example-card-b>
-        }
-        @case ('card_animated_detail'){
-          <app-example-card-c [mainTitle]="i.title" [mainDescription]="i.description"></app-example-card-c>
-        }
-        @case ('card_animated_split'){
-          <app-example-card-d [mainTitle]="i.title" [mainDescription]="i.description"></app-example-card-d>
-        }
-        @default {
-          <app-example-card-e [mainTitle]="i.title" [mainDescription]="i.description"></app-example-card-e>
-        }
-      }
+
+      </app-card-offer>
     }
   }
 }
-
-

@@ -10,9 +10,6 @@ import { MiniCardDetailComponent } from '../mini-card-detail/mini-card-detail.co
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ExampleCardCComponent {
-  @Input() mainTitle!: string;
-  @Input() mainDescription!: string;
-
   totalCards: number = 5;
   staticCards = [
     { title: 'Teste A', company: 'Empresa A', category: 'Categoria 1' },

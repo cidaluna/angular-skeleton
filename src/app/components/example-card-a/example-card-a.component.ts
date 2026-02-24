@@ -11,8 +11,6 @@ import { SkeletonComponent } from '../../shared/skeleton/skeleton.component';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ExampleCardAComponent {
-  @Input() mainTitle!: string;
-  @Input() mainDescription!: string;
   showSkeletonTwo = signal(false);
 
   // controle simples para evitar cliques múltiplos

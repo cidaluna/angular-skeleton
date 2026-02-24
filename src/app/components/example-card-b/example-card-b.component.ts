@@ -12,8 +12,6 @@ import { MINI_CARD_TITLES } from '../../shared/constants/mini-card-titles.consta
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ExampleCardBComponent {
-  @Input() mainTitle!: string;
-  @Input() mainDescription!: string;
   showSkeletonTwo = signal(false);
 
   // controle simples para evitar cliques múltiplos

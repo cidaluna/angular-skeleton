@@ -1,4 +1,4 @@
-import { Component, Input, signal, ChangeDetectionStrategy } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { SkeletonComponent } from '../../shared/skeleton/skeleton.component';
 
 @Component({
@@ -10,8 +10,6 @@ import { SkeletonComponent } from '../../shared/skeleton/skeleton.component';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ExampleCardEComponent {
-  @Input() mainTitle!: string;
-  @Input() mainDescription!: string;
   showSkeletonTwo = signal(false);
 
   // controle simples para evitar cliques múltiplos

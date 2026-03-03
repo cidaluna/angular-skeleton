@@ -10,13 +10,6 @@
   flex-wrap: wrap;
 }
 
-.static-card__container {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin-top: 12px;
-}
-
 .static-card__box {
   display: inline-flex;
   /* garante que filhos flex possam encolher sem overflow quando inline dentro de um h4 */
@@ -34,6 +27,14 @@
   box-sizing: border-box;
 }
 
+/* Container app mini cards */
+
+.static-card__container {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
 
 app-static-mini-card {
   display: flex;

@@ -39,12 +39,15 @@ app-static-mini-card {
   display: flex;
   flex-direction: column;
   justify-content: space-between; /* alinha título (top) e skeletons (embaixo) */
-  align-items: stretch;
-  flex: 0 0 calc((100% - 64px) / 7); // 7 cards com gap de 8px entre eles
-  box-sizing: border-box; // garante que padding e border sejam incluídos na largura total
-  min-width: 130px !important; // largura mínima para manter a legibilidade
-  max-width: 130px !important; // largura fixa para consistência visual
-  height: 190px; /* fixa altura para consistência visual entre cards */
+  align-items: stretch; // garante que o conteúdo interno ocupe toda a largura do card.
+  /* Distribui espaço igualmente entre os itens independente da quantidade.
+     `flex: 1 1 0%` permite crescer/encolher uniformemente; o container controla
+     wrapping. Mantemos `min-width` para evitar que fiquem ilegíveis. */
+  flex: 1 1 0%;
+  box-sizing: border-box; /* garante que padding e border sejam incluídos na largura total */
+  min-width: 120px !important; /* largura mínima para manter legibilidade */
+  max-width: none !important; /* não limitar por largura fixa */
+  min-height: 180px; /* altura mínima para consistência visual entre cards */
   padding: 8px;
 }
 

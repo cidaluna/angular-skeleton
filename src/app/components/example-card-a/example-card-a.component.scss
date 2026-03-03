@@ -1,32 +1,4 @@
-.card-example {
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  background-color: #d2d2d2;
-  color: black;
-  width: 87%;
-  margin: 0 auto;
-  border-radius: 12px;
-  border: 1px solid #cbcbcb;
 
-  p {
-    margin: 8px 0;
-  }
-
-  button.btn-example {
-    background-color: #000076;
-    color: white;
-    align-self: flex-end;
-    padding: 8px 22px;
-  }
-
-  button.btn-example:disabled {
-    background-color: #cbcbcb;
-    color: #868686;
-    cursor: not-allowed;
-  }
-}
 
 .static-card__title {
   color: #000076;
@@ -38,14 +10,11 @@
   flex-wrap: wrap;
 }
 
-.static-card__info-body {
-  margin-bottom: 16px;
-}
-
 .static-card__container {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
+  margin-top: 12px;
 }
 
 .static-card__box {
@@ -58,7 +27,7 @@
 
 .static-card__box app-skeleton {
   display: block;       /* tratar o host como bloco */
-  flex: 1 1 auto;       /* permite crescer/encolher dentro do flex */
+  flex: 1 1 auto;       /* flex: 1 1 auto;  permite crescer/encolher dentro do flex */
   width: 100%;          /* ocupa espaço disponível, sem forçar além do container */
   min-width: 0;         /* evita overflow em flex items */
   max-width: 100%;      /* protege contra valores fixos internos (ex.: 350px) */
@@ -67,6 +36,27 @@
 
 
 app-static-mini-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* alinha título (top) e skeletons (embaixo) */
+  align-items: stretch;
   flex: 0 0 calc((100% - 64px) / 7); // 7 cards com gap de 8px entre eles
   box-sizing: border-box; // garante que padding e border sejam incluídos na largura total
+  min-width: 130px !important; // largura mínima para manter a legibilidade
+  max-width: 130px !important; // largura fixa para consistência visual
+  height: 190px; /* fixa altura para consistência visual entre cards */
+  padding: 8px;
 }
+
+/* Penetra encapsulamento para garantir que o conteúdo interno do componente
+   `app-static-mini-card` ocupe 100% da altura do host e alinhe skeletons. */
+:host ::ng-deep app-static-mini-card .static-mini-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+  box-sizing: border-box;
+}
+
+

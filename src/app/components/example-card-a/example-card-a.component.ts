@@ -19,7 +19,7 @@ export class ExampleCardAComponent {
   private readonly miniCardTitles = [
     'Cheque',
     'Protesto',
-    'Sustação',
+    'Sustação por motivos judiciais comarca SC',
     'Cartório',
     'Endosso',
     'Causa Operação',

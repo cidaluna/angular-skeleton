@@ -14,7 +14,6 @@ export class ExampleCardEComponent {
 
   // controle simples para evitar cliques múltiplos
   isProcessing = signal(false);
-  totalCards: number = 5;
 
   callSkeletonTwo() {
       //this.showSkeletonTwo.update(v => !v);

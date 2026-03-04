@@ -1,4 +1,4 @@
-import { Component, Input, signal, ChangeDetectionStrategy } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { StaticMiniCardComponent } from '../static-mini-card/static-mini-card.component';
 import { SkeletonComponent } from '../../shared/skeleton/skeleton.component';
 import { MINI_CARD_TITLES } from '../../shared/constants/mini-card-titles.constants';
@@ -16,8 +16,6 @@ export class ExampleCardBComponent {
 
   // controle simples para evitar cliques múltiplos
   isProcessing = signal(false);
-  totalCards: number = 5;
-
 
   staticCards: { title: string; uiKey: string } [] = [];
 

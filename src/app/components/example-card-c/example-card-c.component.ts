@@ -1,4 +1,4 @@
-import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { MiniCardDetailComponent } from '../mini-card-detail/mini-card-detail.component';
 
 @Component({
@@ -10,7 +10,6 @@ import { MiniCardDetailComponent } from '../mini-card-detail/mini-card-detail.co
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ExampleCardCComponent {
-  totalCards: number = 5;
   staticCards = [
     { title: 'Teste A', company: 'Empresa A', category: 'Categoria 1' },
     { title: 'Teste B', company: 'Empresa B', category: 'Categoria 2' },

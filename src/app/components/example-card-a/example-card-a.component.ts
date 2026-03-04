@@ -1,4 +1,4 @@
-import { Component, Input, signal, ChangeDetectionStrategy } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { StaticMiniCardComponent } from '../static-mini-card/static-mini-card.component';
 import { SkeletonComponent } from '../../shared/skeleton/skeleton.component';
 
@@ -12,10 +12,8 @@ import { SkeletonComponent } from '../../shared/skeleton/skeleton.component';
 })
 export class ExampleCardAComponent {
   showSkeletonTwo = signal(false);
-
   // controle simples para evitar cliques múltiplos
   isProcessing = signal(false);
-  totalCards: number = 5;
   private readonly miniCardTitles = [
     'Cheque',
     'Protesto',

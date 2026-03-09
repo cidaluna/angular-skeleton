@@ -1,0 +1,22 @@
+import { Pipe, PipeTransform } from '@angular/core';
+import { IHostOffer } from './../../interfaces/host';
+
+@Pipe({
+  name: 'isFirstVisible',
+  standalone: true
+})
+export class IsFirstVisiblePipe implements PipeTransform {
+  /**
+   * @param currentOffer - A oferta que o @for está iterando
+   * @param allOffers - A lista completa (listOffers$)
+   */
+  transform(currentOffer: IHostOffer, allOffers: IHostOffer[] | null): boolean {
+    if (!allOffers || !currentOffer.showAlert) return false;
+
+    // Encontra o primeiro que tem showAlert true na lista toda
+    const firstVisible = allOffers.find(o => o.showAlert === true);
+
+    // Retorna true APENAS se a oferta que o @for está processando agora for esse primeiro visível
+    return firstVisible ? firstVisible.id === currentOffer.id : false;
+  }
+}

@@ -51,9 +51,9 @@ export class ExampleCardAComponent {
       this.showSkeletonTwo.set(true);
 
       // mostra por 4s e depois oculta
-      setTimeout(() => {
-        this.showSkeletonTwo.set(false);
-        this.isProcessing.set(false);
-      }, 4000);
+      // setTimeout(() => {
+      //   this.showSkeletonTwo.set(false);
+      //   this.isProcessing.set(false);
+      // }, 4000);
     }
 }

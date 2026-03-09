@@ -1,11 +1,28 @@
 <div class="card-example">
   <div class="card-example__header">
-    <h2 class="card-example__title">{{ mainTitle }}</h2>
-    <p class="card-example__description">{{ mainDescription }}</p>
+    <h2 class="card-example__title">{{ offer.title }}</h2>
+    <p class="card-example__description">{{ offer.description }}</p>
   </div>
   <hr>
   <div class="card-example__body">
-    <ng-content></ng-content>
+     @switch (offer.type) {
+
+          @case ('card_animated_compact'){
+            <app-example-card-a></app-example-card-a>
+          }
+          @case ('card_animated_summary'){
+            <app-example-card-b></app-example-card-b>
+          }
+          @case ('card_animated_detail'){
+            <app-example-card-c></app-example-card-c>
+          }
+          @case ('card_animated_split'){
+            <app-example-card-d></app-example-card-d>
+          }
+          @case ('card_offer'){
+            <app-example-card-e></app-example-card-e>
+          }
+        }
   </div>
   <div class="card-example__footer">
     <button type="button" class="card-example__button" (click)="onAcceptClick()" [disabled]="isProcessing()">Incluir</button>

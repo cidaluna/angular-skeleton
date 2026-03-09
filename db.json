@@ -24,38 +24,52 @@
   "offerCards": [
     {
       "id": 1,
-      "status": "active",
+      "showAlert": true,
       "type": "card_animated_compact",
       "title": "1 Cyber Monday Offers",
       "description": "Get up to 50% off on selected items."
     },
     {
       "id": 2,
-      "status": "active",
+      "showAlert": true,
       "type": "card_animated_summary",
       "title": "2 Winter Clearance",
       "description": "Up to 70% off on winter collection."
     },
     {
       "id": 3,
-      "status": "active",
+      "showAlert": true,
       "type": "card_animated_detail",
       "title": "3 Spring Specials",
       "description": "Fresh deals for the new season."
     },
     {
       "id": 4,
-      "status": "active",
+      "showAlert": false,
       "type": "card_animated_split",
       "title": "4 Flash Sale",
       "description": "Limited time offers on top products."
     },
     {
       "id": 5,
-      "status": "active",
+      "showAlert": true,
       "type": "card_offer",
       "title": "5 Exclusive Deals",
       "description": "Special discounts for our loyal customers."
+    },
+    {
+      "id": 6,
+      "showAlert": true,
+      "type": "card_offer",
+      "title": "6 Weekend Specials",
+      "description": "Don't miss out on our weekend-only offers."
+    },
+    {
+      "id": 7,
+      "showAlert": true,
+      "type": "card_animated_split",
+      "title": "7 New Arrivals",
+      "description": "Check out the latest additions to our collection."
     }
   ]
 }

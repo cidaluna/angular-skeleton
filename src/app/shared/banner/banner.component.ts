@@ -17,16 +17,16 @@ export class BannerComponent {
 
   onImageLoad(): void {
     this.imageLoaded.emit();
-    console.log('Imagem do banner carregada.');
+    console.log('::Imagem do banner carregada.');
   }
 
   onImageError(): void {
     this.imageError.emit();
-    console.log('Erro ao carregar a imagem do banner.');
+    console.log('::Erro ao carregar a imagem do banner.');
   }
 
   onCtaClick(): void {
     this.ctaClick.emit();
-    console.log('CTA do banner clicado.');
+    console.log('::CTA do banner clicado.');
   }
 }

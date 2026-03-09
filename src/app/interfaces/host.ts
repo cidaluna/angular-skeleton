@@ -1,6 +1,6 @@
 export interface IHostOffer {
   id: number;
-  status: string;
+  showAlert: boolean;
   type: string;
   title: string;
   description: string;

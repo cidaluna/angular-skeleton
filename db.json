@@ -70,6 +70,13 @@
       "type": "card_animated_split",
       "title": "7 New Arrivals",
       "description": "Check out the latest additions to our collection."
+    },
+    {
+      "id": 8,
+      "showAlert": true,
+      "type": "card_offer",
+      "title": "8 Exclusive Score",
+      "description": "Special discounts for our loyal customers with score."
     }
   ]
 }

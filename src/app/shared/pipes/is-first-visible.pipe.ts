@@ -13,6 +13,11 @@ export class IsFirstVisiblePipe implements PipeTransform {
   transform(currentOffer: IHostOffer, allOffers: IHostOffer[] | null): boolean {
     if (!allOffers || !currentOffer.showAlert) return false;
 
+    // if (!allOffers) return false;
+    // // LOG DE DEBUG: Veja o estado real de cada oferta quando o Angular re-checar a lista
+    // console.log(`[Pipe Check] Oferta ID: ${currentOffer.id} | showAlert: ${currentOffer.showAlert}`);
+    // if (!currentOffer.showAlert) return false;
+
     // Encontra o primeiro que tem showAlert true na lista toda
     const firstVisible = allOffers.find(o => o.showAlert === true);
 

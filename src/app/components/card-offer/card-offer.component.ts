@@ -1,15 +1,16 @@
-import { Component, Input, signal, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
+import { Component, Input, signal, ChangeDetectionStrategy, Output, EventEmitter, Type } from '@angular/core';
 import { IHostOffer } from '../../interfaces/host';
 import { ExampleCardAComponent } from '../example-card-a/example-card-a.component';
 import { ExampleCardBComponent } from '../example-card-b/example-card-b.component';
 import { ExampleCardCComponent } from '../example-card-c/example-card-c.component';
 import { ExampleCardDComponent } from '../example-card-d/example-card-d.component';
 import { ExampleCardEComponent } from '../example-card-e/example-card-e.component';
+import { NgComponentOutlet } from '@angular/common';
 
 @Component({
   selector: 'app-card-offer',
   standalone: true,
-  imports: [ExampleCardAComponent, ExampleCardBComponent, ExampleCardCComponent, ExampleCardDComponent, ExampleCardEComponent,],
+  imports: [NgComponentOutlet],
   templateUrl: './card-offer.component.html',
   styleUrl: './card-offer.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -26,18 +27,28 @@ export class CardOfferComponent {
   // controle simples para evitar cliques múltiplos
   isProcessing = signal(false);
 
+  // Mapeamento centralizado: fácil de adicionar N tipos de corpo de oferta e seus componentes correspondentes
+  private readonly offerCardMap: Record<string, Type<unknown>> = {
+    'card_animated_compact': ExampleCardAComponent,
+    'card_animated_summary': ExampleCardBComponent,
+    'card_animated_detail':  ExampleCardCComponent,
+    'card_animated_split':   ExampleCardDComponent,
+    'card_offer':            ExampleCardEComponent,
+  };
+
+  // Getter para o template específico do card, baseado no campo type da oferta
+  get currentCardComponent(): Type<any> | null {
+    const component = this.offerCardMap[this.offer.type];
+    if (!component) return null; // ou um componente de fallback
+    return component;
+  }
+
   onAcceptClick(): void {
     if (this.isProcessing()) return;
 
     this.isProcessing.set(true);
     this.showSkeletonTwo.set(true);
     this.offerAccepted.emit();
-
-    // mostra por 4s e depois oculta — mesma lógica do componente original
-    // setTimeout(() => {
-    //   this.showSkeletonTwo.set(false);
-    //   this.isProcessing.set(false);
-    // }, 4000);
   }
 
 }

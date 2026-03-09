@@ -1,32 +1,15 @@
 @if (listOffers$ | async; as listOffers) {
   @for (offer of listOffers; track offer.id; let index = $index) {
-    @if (offer.status === 'active') {
+    @if (offer.showAlert && (offer | isFirstVisible:listOffers)) {
       <app-card-offer
-        [mainTitle]="offer.title"
-        [mainDescription]="offer.description"
-        (offerAccepted)="offerAccepted(offer, index )"
-      >
-
-        @switch (offer.type) {
-
-          @case ('card_animated_compact'){
-            <app-example-card-a></app-example-card-a>
-          }
-          @case ('card_animated_summary'){
-            <app-example-card-b></app-example-card-b>
-          }
-          @case ('card_animated_detail'){
-            <app-example-card-c></app-example-card-c>
-          }
-          @case ('card_animated_split'){
-            <app-example-card-d></app-example-card-d>
-          }
-          @case ('card_offer'){
-            <app-example-card-e></app-example-card-e>
-          }
-        }
-
+        [offer]="offer"
+        (offerAccepted)="onHandleOfferAccepted()">
       </app-card-offer>
     }
   }
 }
+<div class="info_report">
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus, culpa repellendus est, architecto suscipit
+  voluptatibus dolor laudantium sint similique cumque sapiente tempora natus reiciendis quisquam incidunt blanditiis aut
+  error asperiores.</p>
+</div>

@@ -1,35 +1,46 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { ExampleCardAComponent } from '../example-card-a/example-card-a.component';
-import { ExampleCardBComponent } from "../example-card-b/example-card-b.component";
-import { ExampleCardCComponent } from '../example-card-c/example-card-c.component';
-import { ExampleCardDComponent } from "../example-card-d/example-card-d.component";
-import { HostService } from '../../services/host.service';
-import { IHostOffer } from '../../interfaces/host';
-import { Observable } from 'rxjs';
+import { Component, DoCheck, OnChanges, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 import { CardOfferComponent } from "../card-offer/card-offer.component";
-import { ExampleCardEComponent } from '../example-card-e/example-card-e.component';
+import { Store } from '@ngxs/store';
+import { AcceptOffer, FetchOffers } from '../../store/host-offer.actions';
+import { HostOfferState } from '../../store/host-offer.state';
+import { IsFirstVisiblePipe } from '../../shared/pipes/is-first-visible.pipe';
 
 @Component({
   selector: 'app-host-card',
   standalone: true,
-  imports: [AsyncPipe, ExampleCardAComponent, ExampleCardBComponent, ExampleCardCComponent, ExampleCardDComponent, ExampleCardEComponent, CardOfferComponent],
+  imports: [AsyncPipe, CardOfferComponent, IsFirstVisiblePipe],
   templateUrl: './host-card.component.html',
   styleUrl: './host-card.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HostCardComponent {
-  //listOffers = signal<IHostOffer[]>([]); poderia ser signal tbm
-  listOffers$: Observable<IHostOffer[]>;
+export class HostCardComponent implements OnInit, OnChanges, DoCheck {
 
-  constructor(private readonly hostService: HostService) {
-    // inicializa após hostService estar disponível
-    this.listOffers$ = this.hostService.getHostOffers();
+  private store = inject(Store);
+
+  // Observable vindo do State que contém a lista dinâmica de ofertas
+  listOffers$ = this.store.select(HostOfferState.getListOffers);
+
+  ngOnInit() {
+    // Dispara a busca assim que o componente inicia
+    this.store.dispatch(new FetchOffers());
   }
 
-  offerAccepted(offer: IHostOffer, index: number): void {
-    // handler invoked from template when a card offer is accepted
-    // currently logs acceptance; extend to call backend when available
-    console.log('offerAccepted', { offer, index });
+  ngOnChanges() {
+    console.log(':: Chamou o onChanges');
+  }
+
+  private checkCount = 0;
+
+  ngDoCheck() {
+    this.checkCount++;
+    // Isso vai printar toda vez que o Angular "olhar" para esse componente
+    console.log(`[Performance] Check nº ${this.checkCount} no HostCard`);
+  }
+
+  // Método chamado no clique do botão Incluir em cada card de oferta
+  onHandleOfferAccepted() {
+    // Disparamos a ação. O State removerá o item 0 e o @for atualizará sozinho!
+    this.store.dispatch(new AcceptOffer());
   }
 }

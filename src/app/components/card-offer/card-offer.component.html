@@ -1,11 +1,21 @@
 <div class="card-example">
   <div class="card-example__header">
-    <h2 class="card-example__title">{{ mainTitle }}</h2>
-    <p class="card-example__description">{{ mainDescription }}</p>
+    <h2 class="card-example__title">{{ offer.title }}</h2>
+    <p class="card-example__description">{{ offer.description }}</p>
   </div>
   <hr>
   <div class="card-example__body">
-    <ng-content></ng-content>
+
+    <!--
+    Renderização dinâmica do card específico, sem precisar do switch com vários cases
+    com o map de tipo para componente, fica fácil de manter e escalar (basta adicionar um novo par tipo-componente no map)
+    ele decide se mostra e o que mostra, sem poluir o template com lógica de decisão
+    mantendo clareza e simplicidade no HTML
+    -->
+    @if (currentCardComponent) {
+      <ng-container *ngComponentOutlet="currentCardComponent"></ng-container>
+    }
+
   </div>
   <div class="card-example__footer">
     <button type="button" class="card-example__button" (click)="onAcceptClick()" [disabled]="isProcessing()">Incluir</button>

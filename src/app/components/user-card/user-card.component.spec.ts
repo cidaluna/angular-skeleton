@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UserCardComponent } from './user-card.component';
+import { BannerService } from '../../services/banner.service';
+import { provideHttpClient } from '@angular/common/http';
 
 describe('UserCardComponent', () => {
   let component: UserCardComponent;
@@ -8,7 +10,13 @@ describe('UserCardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [UserCardComponent]
+      // Como o componente é Standalone, ele vai em imports
+      imports: [UserCardComponent],
+      // Os serviços e o HTTP vão em providers
+      providers: [
+        BannerService,
+        provideHttpClient()
+      ]
     })
     .compileComponents();
 

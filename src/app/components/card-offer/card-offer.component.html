@@ -1,4 +1,4 @@
-<div class="card-example">
+<div class="card-example" [attr.data-cy]="'card-offer-' + formatDataCy(offer.title)">
   <div class="card-example__header">
     <h2 class="card-example__title">{{ offer.title }}</h2>
     <p class="card-example__description">{{ offer.description }}</p>

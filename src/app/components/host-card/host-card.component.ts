@@ -22,7 +22,7 @@ export class HostCardComponent implements OnInit, OnChanges, DoCheck {
   listOffers$ = this.store.select(HostOfferState.getListOffers);
 
   ngOnInit() {
-    // Dispara a busca assim que o componente inicia
+    // Dispara uma ordem para buscar dados assim que o componente inicia
     this.store.dispatch(new FetchOffers());
   }
 
@@ -40,7 +40,7 @@ export class HostCardComponent implements OnInit, OnChanges, DoCheck {
 
   // Método chamado no clique do botão Incluir em cada card de oferta
   onHandleOfferAccepted() {
-    // Disparamos a ação. O State removerá o item 0 e o @for atualizará sozinho!
+    // Dispara uma ordem para o State remover o item 0 e o @for atualizará sozinho!
     this.store.dispatch(new AcceptOffer());
   }
 }

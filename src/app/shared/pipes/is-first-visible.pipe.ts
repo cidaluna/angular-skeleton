@@ -22,6 +22,7 @@ export class IsFirstVisiblePipe implements PipeTransform {
     const firstVisible = allOffers.find(o => o.showAlert === true);
 
     // Retorna true APENAS se a oferta que o @for está processando agora for esse primeiro visível
+    // Obs. Caso nao tenha um campo que seja id único, usar campos compostos que identifiquem unicamente a oferta
     return firstVisible ? firstVisible.id === currentOffer.id : false;
   }
 }

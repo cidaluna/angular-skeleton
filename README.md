@@ -22,7 +22,7 @@ Nesta etapa inicial, o desafio foi criar a base visual e integrar o componente c
 ## 🧠 Fase 2: Engenharia de Layout
 Aqui o projeto evoluiu para atender às regras de negócio. O desafio era um card de ofertas com até 5 blocos de informação, onde a ordem e a altura do card eram cruciais.
 
-  ### 🛠️ O Poder do SCSS Avançado (Mixins & Loops)
+- ### 🛠️ O Poder do SCSS Avançado (Mixins & Loops)
   Para evitar a repetição de código (Princípio DRY), desenvolvi um Mixin Inteligente.
 
 **Loop @for:** Automatiza a criação de regras para 2, 3, 4 ou 5 boxes.
@@ -31,7 +31,7 @@ Aqui o projeto evoluiu para atender às regras de negócio. O desafio era um car
 
 **Interpolação:** Uso de #{$variavel} para injetar lógica dinâmica direto nas propriedades CSS.
 
-  ### 📱 Responsividade Estratégica
+- ### 📱 Responsividade Estratégica
   Diferente de um flex-direction: column comum, aplicamos uma reorganização inteligente no Tablet (1024px):
 
 Box 2 (Animated): Desce para a base para o card não ficar muito alto.

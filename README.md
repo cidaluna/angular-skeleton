@@ -3,18 +3,18 @@
 Este projeto documenta minha jornada de especialização em UI Engineering, focada na criação de componentes de carregamento (Skeletons) que não apenas ocupam espaço, mas comunicam a hierarquia visual e respeitam regras de negócio complexas.
 
 ## 🎯 Objetivo do Projeto
-O foco aqui foi transitar de Skeletons estáticos para um Motor de Renderização Dinâmico, capaz de adaptar seu layout (Grid) conforme a quantidade de dados e o dispositivo do usuário, garantindo uma experiência de usuário (UX) superior e performance de carregamento.
+O foco aqui foi transitar de Skeletons estáticos para um Motor de Renderização Dinâmico, capaz de adaptar seu layout (Grid) conforme a quantidade de dados e o dispositivo do usuário, garantindo uma experiência de usuário (UX) amigável e carregamento com performance.
 
 ## 🧬 Fase 1: Fundamentos e Consumo de API
 Nesta etapa inicial, o desafio foi criar a base visual e integrar o componente com dados reais.
 
-O que foi aplicado: Criação de formas circulares e retangulares.
+**O que foi aplicado:** Criação de formas circulares e retangulares.
 
-Integração: Consumo de uma API de usuários para substituir o Skeleton pela foto e dados reais.
+**Integração:** Consumo de uma API de usuários para substituir o Skeleton pela foto e dados reais.
 
-Aprendizado: Entender como o estado de "loading" impacta a percepção de velocidade do app.
+**Aprendizado:** Entender como o estado de "loading" impacta a percepção de velocidade do app.
 
-### Exemplo Skeleton 1
+#### Exemplo Skeleton 1
 
 ![Skeleton 1 no Angular 18](./src/assets/example-angular-skeleton-loader-cida-luna-frontend.gif)
 
@@ -22,17 +22,17 @@ Aprendizado: Entender como o estado de "loading" impacta a percepção de veloci
 ## 🧠 Fase 2: Engenharia de Layout
 Aqui o projeto evoluiu para atender às regras de negócio. O desafio era um card de ofertas com até 5 blocos de informação, onde a ordem e a altura do card eram cruciais.
 
-### 🛠️ O Poder do SCSS Avançado (Mixins & Loops)
-Para evitar a repetição de código (Princípio DRY), desenvolvi um Mixin Inteligente.
+  ### 🛠️ O Poder do SCSS Avançado (Mixins & Loops)
+  Para evitar a repetição de código (Princípio DRY), desenvolvi um Mixin Inteligente.
 
-Loop @for: Automatiza a criação de regras para 2, 3, 4 ou 5 boxes.
+**Loop @for:** Automatiza a criação de regras para 2, 3, 4 ou 5 boxes.
 
-Cálculos Matemáticos: O SCSS calcula sozinho a largura das colunas (ex: calc(35% / n)).
+**Cálculos Matemáticos:** O SCSS calcula sozinho a largura das colunas (ex: calc(35% / n)).
 
-Interpolação: Uso de #{$variavel} para injetar lógica dinâmica direto nas propriedades CSS.
+**Interpolação:** Uso de #{$variavel} para injetar lógica dinâmica direto nas propriedades CSS.
 
-### 📱 Responsividade Estratégica
-Diferente de um flex-direction: column comum, aplicamos uma reorganização inteligente no Tablet (1024px):
+  ### 📱 Responsividade Estratégica
+  Diferente de um flex-direction: column comum, aplicamos uma reorganização inteligente no Tablet (1024px):
 
 Box 2 (Animated): Desce para a base para o card não ficar muito alto.
 
@@ -41,7 +41,7 @@ Box 1 (Score) e Boxes 3, 4, 5 (Infos): Sobem para o topo, dividindo a largura ig
 Seletor :has(): O CSS detecta sozinho quantos filhos o HTML tem e aplica o layout correto.
 
 
-### Exemplo Skeleton 2
+#### Exemplo Skeleton 2
 
 ![Skeleton 2 responsivo no Angular 18](src/assets/example-angular-skeleton-loader-responsive-shimmer-effect-layout-loading-cida-luna-frontend.gif)
 
@@ -58,18 +58,28 @@ Este projeto consolidou conhecimentos fundamentais para qualquer desenvolvedor F
 ✅ Angular 18 & OnPush: Garantia de que o componente só re-renderiza quando os dados realmente mudam.
 
 
+
 ## 🚀 Como rodar o projeto
 1. Clone o repositório.
 
 2. Navegue para dentro do diretório.
 
-3. Rode o json-server configurado com ```bash npm run start:json ```.
+3. Rode o json-server configurado com 
+```bash 
+npm run start:json
+```
 
-4. Instale as dependências com  ```bash npm install ```.
+4. Instale as dependências com  
+```bash 
+npm install 
+```
 
 5. Execute ng serve para ver a mágica acontecer em localhost:4200.
 
-6. Para testes E2E execute ```bash npm run run:cypress ```
+6. Para testes E2E execute 
+```bash 
+npm run run:cypress 
+```
 
 ## 🤝 Contribuição e Feedback
 

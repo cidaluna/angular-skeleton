@@ -56,10 +56,10 @@ export class CardOfferComponent {
     return title
       .toLowerCase()                                  // Minúsculas
       .normalize('NFD')                               // Decompõe caracteres acentuados
-      .replace(/[\u0300-\u036f]/g, '')                // Remove os acentos
-      .replace(/[^a-z0-9]/g, '-')                     // Substitui tudo que não é letra/número por hífen
-      .replace(/-+/g, '-')                            // Remove hífens duplicados
-      .replace(/^-+|-+$/g, '');                       // Remove hífens no início ou fim
+      .replaceAll(/[\u0300-\u036f]/g, '')                // Remove os acentos
+      .replaceAll(/[^a-z0-9]/g, '-')                     // Substitui tudo que não é letra/número por hífen
+      .replaceAll(/-+/g, '-')                            // Remove hífens duplicados
+      .replaceAll(/^-+|-+$/g, '');                       // Remove hífens no início ou fim
   }
 
 }

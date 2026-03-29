@@ -29,18 +29,18 @@
       "title": "1 Cyber Monday Offers",
       "description": "Get up to 50% off on selected items.",
       "skeletonBody": {
-        "bodyTitle": "Recursos Exclusivos",
-        "bodySubtitle": "Confira o que está incluso no seu plano:",
+        "bodyTitle": "Exclusive Features",
+        "bodySubtitle": "Check out what's included in your plan:",
         "showBrokenBar": true,
         "boxes": [
           {
             "title": "2 Boxes",
-            "text1": "50GB SSD",
+            "text1": "Text A",
             "showSkeleton": true
           },
           {
-            "title": "Interpretação",
-            "text1": "Ilimitada",
+            "title": "Interpretation",
+            "text1": "Text B",
             "showSkeleton": true
           }
         ]
@@ -53,23 +53,23 @@
       "title": "2 Winter Clearance",
       "description": "Up to 70% off on winter collection.",
       "skeletonBody": {
-        "bodyTitle": "Recursos Exclusivos",
-        "bodySubtitle": "Confira o que está incluso no seu plano:",
+        "bodyTitle": "Exclusive Features",
+        "bodySubtitle": "Check out what's included in your plan:",
         "showBrokenBar": true,
         "boxes": [
           {
             "title": "3 Boxes",
-            "text1": "50GB SSD",
+            "text1": "Text A",
             "showSkeleton": true
           },
           {
-            "title": "Interpretação",
-            "text1": "Ilimitada",
+            "title": "Interpretation",
+            "text1": "Text B",
             "showSkeleton": true
           },
           {
             "title": "Info 3",
-            "text1": "Texto 3.1",
+            "text1": "Text C",
             "showSkeleton": true
           }
         ]
@@ -82,28 +82,28 @@
       "title": "3 Spring Specials",
       "description": "Fresh deals for the new season.",
       "skeletonBody": {
-        "bodyTitle": "Recursos Exclusivos",
-        "bodySubtitle": "Confira o que está incluso no seu plano:",
+        "bodyTitle": "Exclusive Features",
+        "bodySubtitle": "Check out what's included in your plan:",
         "showBrokenBar": true,
         "boxes": [
           {
             "title": "4 Boxes",
-            "text1": "50GB SSD",
+            "text1": "Text A",
             "showSkeleton": true
           },
           {
-            "title": "Interpretação",
-            "text1": "Ilimitada",
+            "title": "Interpretation",
+            "text1": "Text B",
             "showSkeleton": true
           },
           {
             "title": "Info 3",
-            "text1": "Texto 3.1",
+            "text1": "Text C",
             "showSkeleton": true
           },
           {
             "title": "Info 4",
-            "text1": "Texto 4.1",
+            "text1": "Text D",
             "showSkeleton": true
           }
         ]
@@ -116,72 +116,37 @@
       "title": "4 Flash Sale",
       "description": "Limited time offers on top products.",
       "skeletonBody": {
-        "bodyTitle": "Recursos Exclusivos",
-        "bodySubtitle": "Confira o que está incluso no seu plano:",
+        "bodyTitle": "Exclusive Features",
+        "bodySubtitle": "Check out what's included in your plan:",
         "showBrokenBar": true,
         "boxes": [
           {
             "title": "5 Boxes",
-            "text1": "50GB SSD",
+            "text1": "Text A",
             "showSkeleton": true
           },
           {
-            "title": "Interpretação",
-            "text1": "Ilimitada",
+            "title": "Interpretation",
+            "text1": "Text B",
             "showSkeleton": true
           },
           {
             "title": "Info 3",
-            "text1": "Texto 3.1",
+            "text1": "Text C",
             "showSkeleton": true
           },
           {
             "title": "Info 4",
-            "text1": "Texto 4.1",
+            "text1": "Text D",
             "showSkeleton": true
           },
           {
             "title": "Info 5",
-            "text1": "Texto 5.1",
+            "text1": "Text E",
             "showSkeleton": true
           }
         ]
       }
-    },
-    {
-      "id": 5,
-      "showAlert": true,
-      "type": "card_offer",
-      "title": "5 Exclusive Deals",
-      "description": "Special discounts for our loyal customers."
-    },
-    {
-      "id": 6,
-      "showAlert": true,
-      "type": "card_offer",
-      "title": "6 Weekend Specials",
-      "description": "Don't miss out on our weekend-only offers."
-    },
-    {
-      "id": 7,
-      "showAlert": true,
-      "type": "card_animated_split",
-      "title": "7 New Arrivals",
-      "description": "Check out the latest additions to our collection."
-    },
-    {
-      "id": 8,
-      "showAlert": true,
-      "type": "card_offer",
-      "title": "8 Exclusive Score",
-      "description": "Special discounts for our loyal customers with score."
-    },
-    {
-      "id": 9,
-      "showAlert": true,
-      "type": "split",
-      "title": "9 Limited Time Offer",
-      "description": "Hurry up! These deals won't last long."
     }
   ]
 }

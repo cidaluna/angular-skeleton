@@ -1,0 +1,77 @@
+$gap: 8px;
+
+@mixin skeleton-named-layout($total-boxes, $is-tablet: false) {
+  display: grid;
+  gap: $gap;
+
+  // Variáveis de controle para as colunas
+  $sub-cols: $total-boxes - 2; // Quantidade de boxes "Info" + Score
+
+  @if $is-tablet {
+    // TABLET: Score e Infos no topo, Animated (Box 2) embaixo
+    $cols: $total-boxes - 1;
+    grid-template-columns: repeat($cols, 1fr);
+
+    .skeleton-body__score { grid-area: 1 / 1; }
+    .skeleton-body__animated { grid-area: 2 / 1 / 2 / #{$cols + 1}; }
+
+    // Posiciona cada .skeleton-body__infos lado a lado no topo
+    .skeleton-body__infos {
+      @for $i from 1 through $sub-cols {
+        &:nth-of-type(#{$i}) { grid-area: 1 / #{$i + 1}; }
+      }
+    }
+  } @else {
+    // DESKTOP: Score e Infos na esquerda (35%), Animated na direita (65%)
+    grid-template-columns: repeat($sub-cols, calc(35% / #{$sub-cols})) 65%;
+
+    .skeleton-body__score { grid-column: 1 / span #{$sub-cols}; grid-row: 1; }
+    .skeleton-body__animated { grid-column: #{$sub-cols + 1}; grid-row: 1 / span 2; }
+
+    // Posiciona cada .skeleton-body__infos na linha de baixo (Row 2)
+    .skeleton-body__infos {
+      @for $i from 1 through $sub-cols {
+        &:nth-of-type(#{$i}) { grid-column: #{$i}; grid-row: 2; }
+      }
+    }
+  }
+}
+
+.skeleton-body__boxes {
+  display: flex;
+  gap: $gap;
+  width: 100%;
+
+  // Aplicando a lógica baseada na contagem total de elementos filhos
+  @for $i from 3 through 5 {
+    &:has(> :nth-child(#{$i}):last-child) {
+      @include skeleton-named-layout($i);
+    }
+  }
+
+  @media (max-width: 1024px) {
+    @for $i from 3 through 5 {
+      &:has(> :nth-child(#{$i}):last-child) {
+        @include skeleton-named-layout($i, true);
+      }
+    }
+  }
+
+  // Mobile simples (Empilhado)
+  @media (max-width: 500px) {
+    display: flex !important;
+    flex-direction: column !important;
+    .skeleton-body__score, .skeleton-body__animated, .skeleton-body__infos {
+      width: 100% !important;
+    }
+  }
+}
+
+// Estilo comum para todos os tipos de box
+.skeleton-body__score, .skeleton-body__animated, .skeleton-body__infos {
+  background-color: #fff;
+  border: 1px solid #00218b;
+  border-radius: 8px;
+  padding: 12px;
+  min-height: 100px;
+}

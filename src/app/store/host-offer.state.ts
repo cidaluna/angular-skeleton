@@ -19,7 +19,7 @@ export interface HostOfferStateModel {
 @Injectable()
 export class HostOfferState {
   // Injetamos o serviço que criamos para buscar os dados do JSON Server
-  private offerService = inject(HostOfferService);
+  private readonly offerService = inject(HostOfferService);
 
   // Seletor: Retorna a lista completa (ou vazia)
   @Selector()

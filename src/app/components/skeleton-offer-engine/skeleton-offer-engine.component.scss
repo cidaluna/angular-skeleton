@@ -1,0 +1,163 @@
+$gap: 8px;
+
+.skeleton-body__boxes {
+  display: flex; // Padrão para 1 ou mais boxes
+  gap: $gap;
+  width: 100%;
+
+  // --- REGRA: 2 BOXES (Flexbox simples resolve) ---
+  &:has(> .skeleton-body__box:nth-child(2):last-child) {
+    flex-direction: row;
+    .skeleton-body__box:nth-child(1) { flex: 0 0 calc(35% - #{$gap}); }
+    .skeleton-body__box:nth-child(2) { flex: 0 0 calc(65% - #{$gap}); }
+  }
+
+  // --- REGRA: 3 BOXES (Mudamos para Grid para alinhar alturas) ---
+  &:has(> .skeleton-body__box:nth-child(3):last-child) {
+    display: grid;
+    grid-template-columns: 35% 65%; // Coluna da esquerda e direita
+    grid-template-rows: auto auto;   // Duas linhas automáticas
+
+    .skeleton-body__box:nth-child(1) { grid-column: 1; grid-row: 1; }
+    .skeleton-body__box:nth-child(3) { grid-column: 1; grid-row: 2; }
+    .skeleton-body__box:nth-child(2) {
+      grid-column: 2;
+      grid-row: 1 / span 2; // O Box 2 "estica" da linha 1 até a 2
+    }
+  }
+
+  // --- REGRA: 4 BOXES (O cenário solicitado) ---
+  &:has(> .skeleton-body__box:nth-child(4):last-child) {
+    display: grid;
+    // Criamos 3 colunas: as duas primeiras somam 35% (17.5% cada) e a última 65%
+    grid-template-columns: 17.5% 17.5% 65%;
+    grid-template-rows: auto auto;
+
+    .skeleton-body__box:nth-child(1) {
+      grid-column: 1 / span 2; // Ocupa o topo das duas colunas menores (35%)
+      grid-row: 1;
+    }
+    .skeleton-body__box:nth-child(2) {
+      grid-column: 3;
+      grid-row: 1 / span 2; // Estica para ter a altura total (Box 1 + Gap + Box 3/4)
+    }
+    .skeleton-body__box:nth-child(3) {
+      grid-column: 1;
+      grid-row: 2; // Lado esquerdo inferior
+    }
+    .skeleton-body__box:nth-child(4) {
+      grid-column: 2;
+      grid-row: 2; // Lado direito inferior (ao lado do 3)
+    }
+  }
+
+  // --- REGRA: 5 BOXES (Desktop) ---
+  &:has(> .skeleton-body__box:nth-child(5):last-child) {
+    display: grid;
+    // Criamos 4 colunas: as três primeiras somam 35% (11.66% cada) e a última 65%
+    grid-template-columns: 11.66% 11.66% 11.66% 65%;
+    grid-template-rows: auto auto;
+
+    .skeleton-body__box:nth-child(1) {
+      grid-column: 1 / span 3; // Ocupa o topo das três colunas menores (35%)
+      grid-row: 1;
+    }
+    .skeleton-body__box:nth-child(2) {
+      grid-column: 4;
+      grid-row: 1 / span 2; // Estica para ter a altura total (Box 1 + Gap + Box 3/4/5)
+    }
+    .skeleton-body__box:nth-child(3) {
+      grid-column: 1;
+      grid-row: 2; // Lado esquerdo inferior
+    }
+    .skeleton-body__box:nth-child(4) {
+      grid-column: 2;
+      grid-row: 2; // Lado direito inferior (ao lado do 3)
+    }
+    .skeleton-body__box:nth-child(5) {
+      grid-column: 3;
+      grid-row: 2; // Lado direito inferior (ao lado do 4)
+    }
+  }
+
+  // --- RESPONSIVIDADE (Tablet) ---
+  @media (max-width: 1024px) {
+    display: grid;
+    gap: $gap;
+
+    // Ajuste Base para todos os boxes em mobile
+    .skeleton-body__box {
+      width: 100%; // Ocupa o espaço da célula do grid
+    }
+
+    // CENÁRIO: 3 BOXES
+    // Linha 1: [ Box 1 ] [ Box 3 ] (50% cada)
+    // Linha 2: [      Box 2      ] (100%)
+    &:has(> .skeleton-body__box:nth-child(3):last-child) {
+      grid-template-columns: 1fr 1fr; // Duas colunas iguais
+
+      .skeleton-body__box:nth-child(1) { grid-area: 1 / 1; } // Linha 1, Coluna 1
+      .skeleton-body__box:nth-child(3) { grid-area: 1 / 2; } // Linha 1, Coluna 2
+      .skeleton-body__box:nth-child(2) {
+        grid-area: 2 / 1 / 2 / 3; // Linha 2, esticando da Coluna 1 até a 3 (total)
+      }
+    }
+
+    // CENÁRIO: 4 BOXES
+    // Linha 1: [ Box 1 ] [ Box 3 ] [ Box 4 ] (33.3% cada)
+    // Linha 2: [           Box 2           ] (100%)
+    &:has(> .skeleton-body__box:nth-child(4):last-child) {
+      grid-template-columns: 1fr 1fr 1fr; // Três colunas iguais
+
+      .skeleton-body__box:nth-child(1) { grid-area: 1 / 1; } // Topo esquerda
+      .skeleton-body__box:nth-child(3) { grid-area: 1 / 2; } // Topo meio
+      .skeleton-body__box:nth-child(4) { grid-area: 1 / 3; } // Topo direita
+      .skeleton-body__box:nth-child(2) {
+        grid-area: 2 / 1 / 2 / 4; // Linha 2, esticando por todas as 3 colunas
+      }
+    }
+
+    // CENÁRIO: 5 BOXES
+    // Linha 1: [ Box 1 ] [ Box 3 ] [ Box 4 ] [ Box 5 ] (25% cada)
+    // Linha 2: [           Box 2                     ] (100%)
+    &:has(> .skeleton-body__box:nth-child(5):last-child) {
+      grid-template-columns: 1fr 1fr 1fr 1fr; // Quatro colunas iguais
+
+      .skeleton-body__box:nth-child(1) { grid-area: 1 / 1; } // Topo esquerda
+      .skeleton-body__box:nth-child(3) { grid-area: 1 / 2; } // Topo meio
+      .skeleton-body__box:nth-child(4) { grid-area: 1 / 3; } // Topo direita
+      .skeleton-body__box:nth-child(5) { grid-area: 1 / 4; } // Topo direita
+      .skeleton-body__box:nth-child(2) {
+        grid-area: 2 / 1 / 2 / 5; // Linha 2, esticando por todas as 5 colunas
+      }
+    }
+
+    // Fallback: Se tiver apenas 2 ou 1 box, empilha normalmente ou mantém lado a lado
+    &:not(:has(> .skeleton-body__box:nth-child(3))) {
+       display: flex;
+       flex-direction: column;
+    }
+  }
+
+
+  // --- RESPONSIVIDADE (Smartphone) ---
+  @media (max-width: 500px) {
+    display: flex !important; // Forçamos a volta para flex
+    flex-direction: column !important;
+
+    .skeleton-body__box {
+      width: 100% !important;
+      grid-column: auto !important; // Reseta as regras de grid
+      grid-row: auto !important;
+    }
+  }
+}
+
+.skeleton-body__box {
+  min-height: 100px; // Apenas para garantir visibilidade se estiver vazio
+  background-color: #fff;
+  border: 1px solid #00218b;
+  border-radius: 8px;
+  padding: 12px;
+  box-sizing: border-box;
+}

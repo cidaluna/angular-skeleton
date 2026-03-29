@@ -4,34 +4,36 @@ $gap: 8px;
   display: grid;
   gap: $gap;
 
-  // Variáveis de controle para as colunas
-  $sub-cols: $total-boxes - 2; // Quantidade de boxes "Info" + Score
-
-  @if $is-tablet {
-    // TABLET: Score e Infos no topo, Animated (Box 2) embaixo
-    $cols: $total-boxes - 1;
-    grid-template-columns: repeat($cols, 1fr);
-
-    .skeleton-body__score { grid-area: 1 / 1; }
-    .skeleton-body__animated { grid-area: 2 / 1 / 2 / #{$cols + 1}; }
-
-    // Posiciona cada .skeleton-body__infos lado a lado no topo
-    .skeleton-body__infos {
-      @for $i from 1 through $sub-cols {
-        &:nth-of-type(#{$i}) { grid-area: 1 / #{$i + 1}; }
-      }
-    }
+  @if $total-boxes == 2 {
+    grid-template-columns: 35% 65%;
+    .skeleton-body__score { grid-column: 1; }
+    .skeleton-body__animated { grid-column: 2; }
   } @else {
-    // DESKTOP: Score e Infos na esquerda (35%), Animated na direita (65%)
-    grid-template-columns: repeat($sub-cols, calc(35% / #{$sub-cols})) 65%;
+    $sub-cols: $total-boxes - 2;
 
-    .skeleton-body__score { grid-column: 1 / span #{$sub-cols}; grid-row: 1; }
-    .skeleton-body__animated { grid-column: #{$sub-cols + 1}; grid-row: 1 / span 2; }
-
-    // Posiciona cada .skeleton-body__infos na linha de baixo (Row 2)
-    .skeleton-body__infos {
+    @if $is-tablet {
+      $cols: $total-boxes - 1;
+      grid-template-columns: repeat($cols, 1fr);
+      .skeleton-body__score { grid-area: 1 / 1; }
+      .skeleton-body__animated { grid-area: 2 / 1 / 2 / #{$cols + 1}; }
+      // Ajuste de Ordem no Tablet
       @for $i from 1 through $sub-cols {
-        &:nth-of-type(#{$i}) { grid-column: #{$i}; grid-row: 2; }
+        // O primeiro 'info' é o 3º filho total (i=1 + 2 = 3)
+        .skeleton-body__infos:nth-child(#{$i + 2}) {
+          grid-area: 1 / #{$i + 1};
+        }
+      }
+    } @else {
+      grid-template-columns: repeat($sub-cols, calc(35% / #{$sub-cols})) 65%;
+      .skeleton-body__score { grid-column: 1 / span #{$sub-cols}; grid-row: 1; }
+      .skeleton-body__animated { grid-column: #{$sub-cols + 1}; grid-row: 1 / span 2; }
+      // Ajuste de Ordem no Desktop
+      @for $i from 1 through $sub-cols {
+        // O primeiro 'info' (i=1) deve ir para a coluna 1 da linha 2
+        .skeleton-body__infos:nth-child(#{$i + 2}) {
+          grid-column: #{$i};
+          grid-row: 2;
+        }
       }
     }
   }
@@ -42,36 +44,43 @@ $gap: 8px;
   gap: $gap;
   width: 100%;
 
-  // Aplicando a lógica baseada na contagem total de elementos filhos
-  @for $i from 3 through 5 {
+  @for $i from 2 through 5 {
     &:has(> :nth-child(#{$i}):last-child) {
       @include skeleton-named-layout($i);
     }
   }
 
   @media (max-width: 1024px) {
-    @for $i from 3 through 5 {
+    @for $i from 2 through 5 {
       &:has(> :nth-child(#{$i}):last-child) {
         @include skeleton-named-layout($i, true);
       }
     }
   }
 
-  // Mobile simples (Empilhado)
   @media (max-width: 500px) {
     display: flex !important;
     flex-direction: column !important;
     .skeleton-body__score, .skeleton-body__animated, .skeleton-body__infos {
       width: 100% !important;
+      grid-column: auto !important;
+      grid-row: auto !important;
     }
   }
 }
 
-// Estilo comum para todos os tipos de box
-.skeleton-body__score, .skeleton-body__animated, .skeleton-body__infos {
-  background-color: #fff;
-  border: 1px solid #00218b;
-  border-radius: 8px;
+// --- ESTILOS VISUAIS RESTAURADOS ---
+.skeleton-body__score,
+.skeleton-body__animated,
+.skeleton-body__infos {
+  background-color: #fff;       // Cor de fundo branca restaurada
+  border: 1px solid #00218b;    // Borda azul restaurada
+  border-radius: 8px;           // Arredondamento restaurado
   padding: 12px;
   min-height: 100px;
+  box-sizing: border-box;       // Garante que o padding não quebre o cálculo de %
+}
+
+.skeleton-body__title {
+  color: #000076;               // Título azul escuro restaurado
 }

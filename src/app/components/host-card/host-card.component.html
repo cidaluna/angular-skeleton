@@ -1,10 +1,11 @@
-@if (listOffers$ | async; as listOffers) {
-  @for (offer of listOffers; track offer.id; let index = $index) {
-    @if (offer.showAlert && (offer | isFirstVisible:listOffers)) {
-      <app-card-offer
+@if (listOffers$ | async; as offers) {
+  @for (offer of offers; track offer.id; let index = $index) {
+    @if (offer.showAlert && (offer | isFirstVisible:offers)) {
+      <br>
+      <app-card-offer-engine
         [offer]="offer"
         (offerAccepted)="onHandleOfferAccepted()">
-      </app-card-offer>
+      </app-card-offer-engine>
     }
   }
 }

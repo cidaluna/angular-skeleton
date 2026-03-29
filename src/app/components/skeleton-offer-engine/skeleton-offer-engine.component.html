@@ -1,0 +1,35 @@
+@if (config) {
+  <div class="skeleton-body" [ngClass]="'skeleton-body-split'">
+    @if (config.bodyTitle){
+      <h3 class="skeleton-body__title">{{ config.bodyTitle }}</h3>
+    }
+    @if (config.bodySubtitle){
+      <h4 class="skeleton-body__subtitle">{{ config.bodySubtitle }}</h4>
+    }
+    <div class="skeleton-body__container">
+      @if (config.showBrokenBar){
+        <div class="skeleton-body__broken-bar"></div>
+      }
+      <div class="skeleton-body__boxes">
+        @for (box of config.boxes; track $index) {
+          <div class="skeleton-body__box">
+            @if (box.title) {
+              <h4 class="skeleton-body__box-title">{{ box.title }}</h4>
+            }
+
+            <div class="skeleton-body__box-row">
+              @if(box.text1) {
+                <p class="skeleton-body__box-text">{{ box.text1 }}</p>
+              }
+              @if (box.showSkeleton) {
+                <app-skeleton></app-skeleton>
+              }
+            </div>
+
+
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+}

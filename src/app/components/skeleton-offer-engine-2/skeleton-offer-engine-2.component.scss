@@ -79,6 +79,7 @@ $gap: 8px;
   display: flex;
   gap: $gap;
   width: 100%;
+  margin-top: 6px;
 
   // Loop inteligente: de 2 até 5.
   // Ele vai criar 4 seletores automaticamente.
@@ -114,7 +115,7 @@ $gap: 8px;
 .skeleton-body__animated,
 .skeleton-body__infos {
   background-color: #fff;       // Cor de fundo branca restaurada
-  border: 1px solid #00218b;    // Borda azul restaurada
+  border: 2px solid #00218b;    // Borda azul restaurada
   border-radius: 8px;           // Arredondamento restaurado
   padding: 12px;
   min-height: 100px;

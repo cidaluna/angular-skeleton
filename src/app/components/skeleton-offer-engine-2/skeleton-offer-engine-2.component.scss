@@ -1,0 +1,126 @@
+// Definimos uma variável para o espaçamento entre os boxes.
+$gap: 8px;
+
+
+// Criamos um mixin.
+// Ele recebe o número total de boxes (2, 3, 4 ou 5) e um booleano para indicar se é tablet ou não.
+@mixin skeleton-named-layout($total-boxes, $is-tablet: false) {
+  display: grid; // Ativa o modo "Grade" (X e Y)
+  gap: $gap;     // Aplica o espaçamento entre os boxes definido na variável
+
+  // --- CENÁRIO DE 2 BOXES ---
+  // Se o Angular mandar apenas 2 boxes para o HTML...
+  @if $total-boxes == 2 {
+    // Criamos duas colunas fixas: a primeira com 35% e a segunda com 65% da largura
+    grid-template-columns: 35% 65%;
+
+    // Posicionamos o Score na primeira coluna e o Animated na segunda
+    .skeleton-body__score { grid-column: 1; }
+    .skeleton-body__animated { grid-column: 2; }
+  } @else {
+    // --- CENÁRIO DE 3, 4 OU 5 BOXES ---
+    // Calculamos quantas colunas de "Info" existem.
+    // Como o Score e o Animated sempre existem, as infos são (Total - 2).
+    // Ex: Se tem 5 boxes, $sub-cols será 3.
+    $sub-cols: $total-boxes - 2;
+
+    // --- LÓGICA PARA TABLET (Regra do PM: Animated vai para baixo) ---
+    @if $is-tablet {
+      // No tablet, o Score e as Infos ficam no topo.
+      // Então o número de colunas é o (Total - 1), já que o Animated saiu da linha.
+      $cols: $total-boxes - 1;
+
+      // Criamos colunas de tamanhos iguais usando "1fr" (1 fração do espaço)
+      grid-template-columns: repeat($cols, 1fr);
+
+      // Score fica na primeira linha, primeira coluna
+      .skeleton-body__score { grid-area: 1 / 1; }
+
+      // Animated fica na segunda linha, e "estica" da coluna 1 até a última
+      // O #{$cols + 1} é uma interpolação (transforma o número em texto para o CSS)
+      .skeleton-body__animated { grid-area: 2 / 1 / 2 / #{$cols + 1}; }
+
+      // Loop para as Infos: Elas devem ficar na linha 1, ao lado do Score
+      @for $i from 1 through $sub-cols {
+        // Buscamos o box correto pulando os 2 primeiros (Score/Animated)
+        // O primeiro 'info' é o 3º filho total (i=1 + 2 = 3)
+        .skeleton-body__infos:nth-child(#{$i + 2}) {
+          // Colocamos na linha 1, mas a partir da coluna 2 (pois a 1 é do Score)
+          grid-area: 1 / #{$i + 1};
+        }
+      }
+    } @else {
+      // --- LÓGICA PARA DESKTOP (Regra do PM: 35% e 65%) ---
+      // Criamos as colunas:
+      // Primeiro repetimos as sub-colunas dividindo os 35% por elas.
+      // Depois adicionamos a última coluna fixa de 65%.
+      grid-template-columns: repeat($sub-cols, calc(35% / #{$sub-cols})) 65%;
+
+      // O Score ocupa a primeira linha e "atravessa" todas as sub-colunas (span)
+      .skeleton-body__score { grid-column: 1 / span #{$sub-cols}; grid-row: 1; }
+
+      // O Animated fica na última coluna e atravessa as duas linhas verticais (span 2)
+      .skeleton-body__animated { grid-column: #{$sub-cols + 1}; grid-row: 1 / span 2; }
+
+      // Loop para as Infos (Box 3, 4, 5...) no Desktop
+      @for $i from 1 through $sub-cols {
+        // O primeiro 'info' (i=1) deve ir para a coluna 1 da linha 2
+        // Pega o 3º filho em diante
+        .skeleton-body__infos:nth-child(#{$i + 2}) {
+          grid-column: #{$i}; // Coloca na coluna correspondente (1, 2 ou 3)
+          grid-row: 2;        // Sempre na segunda linha embaixo de Score
+        }
+      }
+    }
+  }
+}
+
+.skeleton-body__boxes {
+  display: flex;
+  gap: $gap;
+  width: 100%;
+
+  // Loop inteligente: de 2 até 5.
+  // Ele vai criar 4 seletores automaticamente.
+  @for $i from 2 through 5 {
+    &:has(> :nth-child(#{$i}):last-child) {
+      @include skeleton-named-layout($i); // Chama o mixin passando a quantidade de boxes
+    }
+  }
+
+  @media (max-width: 1024px) {
+    @for $i from 2 through 5 {
+      &:has(> :nth-child(#{$i}):last-child) {
+        @include skeleton-named-layout($i, true); // Chama o mixin para tablet passando o booleano "true"
+      }
+    }
+  }
+
+  @media (max-width: 500px) {
+    display: flex !important; // Remove Grid e aplica Flexbox para smartphone
+    flex-direction: column !important;  // Empilha todos os boxes verticalmente, um abaixo do outro
+
+    // Reseta as propriedades de Grid para que não haja conflitos
+    .skeleton-body__score, .skeleton-body__animated, .skeleton-body__infos {
+      width: 100% !important;
+      grid-column: auto !important;
+      grid-row: auto !important;
+    }
+  }
+}
+
+// --- ESTILOS VISUAIS RESTAURADOS ---
+.skeleton-body__score,
+.skeleton-body__animated,
+.skeleton-body__infos {
+  background-color: #fff;       // Cor de fundo branca restaurada
+  border: 1px solid #00218b;    // Borda azul restaurada
+  border-radius: 8px;           // Arredondamento restaurado
+  padding: 12px;
+  min-height: 100px;
+  box-sizing: border-box;       // Garante que o padding não quebre o cálculo de %
+}
+
+.skeleton-body__title {
+  color: #000076;               // Título azul escuro restaurado
+}

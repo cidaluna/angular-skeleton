@@ -1,11 +1,12 @@
 import { Component, EventEmitter, Input, Output, signal } from '@angular/core';
 import { IHostOffer } from '../../interfaces/host';
 import { SkeletonOfferEngineComponent } from "../skeleton-offer-engine/skeleton-offer-engine.component";
+import { SkeletonOfferEngine2Component } from '../skeleton-offer-engine-2/skeleton-offer-engine-2.component';
 
 @Component({
   selector: 'app-card-offer-engine',
   standalone: true,
-  imports: [SkeletonOfferEngineComponent],
+  imports: [SkeletonOfferEngineComponent, SkeletonOfferEngine2Component],
   templateUrl: './card-offer-engine.component.html',
   styleUrl: './card-offer-engine.component.scss'
 })
